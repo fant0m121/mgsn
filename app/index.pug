@@ -1,0 +1,63 @@
+- var imgPath = '/assets/images/';
+- var svgPath = '/assets/images/svg/';
+- var pageTitle = 'МГСН'
+
+doctype html
+html.no-js(lang="ru")
+	head
+		meta(charset="utf-8")
+		title= pageTitle
+		meta(name="description", content="")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+
+		// build:css /assets/styles/vendor.css
+		// bower:css
+		link(rel="stylesheet", href="/../bower_components/bootstrap/dist/css/bootstrap.css")
+		// endbower
+		// endbuild
+
+		// build:css /assets/styles/main.css
+		link(rel="stylesheet" href="assets/styles/main.css")
+		// endbuild
+		
+		// build:js assets/scripts/vendor/modernizr.js
+		script(src="/../bower_components/modernizr/modernizr.js")
+		// endbuild
+	
+	body.b-page
+		.b-page__line
+			.b-header
+				.b-header__logo
+					img.b-logo(src="assets/images/logo.png")
+
+				.b-header__button
+					a.b-button.b-button--green Обратный звонок
+				
+				.b-header__phone +7 (495) 123-47-04
+		
+		.b-page__line
+			.b-menu
+				a.b-menu__item(href="#") Спецпредложения
+				a.b-menu__item(href="#") Процесс
+				a.b-menu__item(href="#") Необходимые документы
+				a.b-menu__item(href="#") Оценка по СМС
+				a.b-menu__item(href="#") О компании
+				a.b-menu__item(href="#") Отзывы
+				a.b-menu__item(href="#") Контакты
+
+
+
+
+		// build:js /assets/scripts/vendor.js
+		// bower:js
+		script(src="/../bower_components/jquery/dist/jquery.js")
+		// endbower
+		// endbuild
+		
+		// build:js /assets/scripts/plugins.js
+		script(src="/../bower_components/bootstrap/js/affix.js")
+		// endbuild
+		
+		// build:js /assets/scripts/main.js
+		script(src="assets/scripts/main.js")
+		// endbuild
