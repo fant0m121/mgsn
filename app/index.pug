@@ -10,44 +10,68 @@ html.no-js(lang="ru")
 		meta(name="description", content="")
 		meta(http-equiv="X-UA-Compatible", content="IE=edge")
 
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700')
+
 		// build:css /assets/styles/vendor.css
 		// bower:css
-		link(rel="stylesheet", href="/../bower_components/bootstrap/dist/css/bootstrap.css")
+		link(rel='stylesheet', href='/../bower_components/bootstrap/dist/css/bootstrap.css')
 		// endbower
 		// endbuild
 
 		// build:css /assets/styles/main.css
-		link(rel="stylesheet" href="assets/styles/main.css")
+		link(rel='stylesheet' href='assets/styles/main.css')
 		// endbuild
 		
-		// build:js assets/scripts/vendor/modernizr.js
-		script(src="/../bower_components/modernizr/modernizr.js")
+		// build:js /assets/scripts/modernizr.js
+		script(src='/../bower_components/modernizr/modernizr.js')
 		// endbuild
 	
 	body.b-page
 		.b-page__line
 			.b-header
 				.b-header__logo
-					img.b-logo(src="assets/images/logo.png")
+					img.b-logo(src='assets/images/logo.png')
 
 				.b-header__button
-					a.b-button.b-button--green Обратный звонок
+					a.b-button.b-button--green.b-button--callback(href='#') Обратный звонок
 				
 				.b-header__phone +7 (495) 123-47-04
 		
 		.b-page__line
 			.b-menu
-				a.b-menu__item(href="#") Спецпредложения
-				a.b-menu__item(href="#") Процесс
-				a.b-menu__item(href="#") Необходимые документы
-				a.b-menu__item(href="#") Оценка по СМС
-				a.b-menu__item(href="#") О компании
-				a.b-menu__item(href="#") Отзывы
-				a.b-menu__item(href="#") Контакты
+				a.b-menu__item(href='#') Спецпредложения
+				a.b-menu__item(href='#') Процесс
+				a.b-menu__item(href='#') Необходимые документы
+				a.b-menu__item(href='#') Оценка по СМС
+				a.b-menu__item(href='#') О компании
+				a.b-menu__item(href='#') Отзывы
+				a.b-menu__item(href='#') Контакты
 
+		.b-page__line.b-page__line--main
+			.b-special
+				.b-special__title
+					| Выкуп за 1 день.
+					br
+					| Квартир, комнат, долей в Москве и подмосковье
+					br
+					span.b-special__title--blue За счет собственных средств
+					.b-special__box выдаем аванс в день обращения
 
+				.b-special__form
+					.b-form
+						.b-form__text Оставьте заявку мы свяжемся с вами в течение 5 минут
+						.b-form__fieldset
+							.b-form__group
+								input.b-input.b-input--text(name='name', type='text', placeholder='Ваше имя')
+							.b-form__group
+								input.b-input.b-input--text(name='phone', type='text', placeholder='+7 (123) 456-78-89')
+							.b-form__group
+								a.b-button.b-button--send(name='submit', href='#') Отправить
+								.b-form__data 
+									img(src='/assets/images/icon-data.png', alt='')
+									| &nbsp;Данные не передаются 3-м лицам
 
-
+		
 		// build:js /assets/scripts/vendor.js
 		// bower:js
 		script(src="/../bower_components/jquery/dist/jquery.js")
