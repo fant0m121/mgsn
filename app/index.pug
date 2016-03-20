@@ -48,29 +48,343 @@ html.no-js(lang="ru")
 				a.b-menu__item(href='#') Контакты
 
 		.b-page__line.b-page__line--main
-			.b-special
-				.b-special__title
+			.b-main
+				.b-main__title
 					| Выкуп за 1 день.
 					br
 					| Квартир, комнат, долей в Москве и подмосковье
 					br
-					span.b-special__title--blue За счет собственных средств
-					.b-special__box выдаем аванс в день обращения
+					span.b-main__title--blue За счет собственных средств
+					.b-main__box выдаем аванс в день обращения
 
-				.b-special__form
+				.b-main__form
 					.b-form
-						.b-form__text Оставьте заявку мы свяжемся с вами в течение 5 минут
+						.b-form__title Оставьте заявку мы свяжемся с вами в течение 5 минут
 						.b-form__fieldset
-							.b-form__group
+							.b-form__group.b-form__group--main
 								input.b-input.b-input--text(name='name', type='text', placeholder='Ваше имя')
-							.b-form__group
+							.b-form__group.b-form__group--main
 								input.b-input.b-input--text(name='phone', type='text', placeholder='+7 (123) 456-78-89')
-							.b-form__group
+							.b-form__group.b-form__group--main
 								a.b-button.b-button--send(name='submit', href='#') Отправить
 								.b-form__data 
 									img(src='/assets/images/icon-data.png', alt='')
 									| &nbsp;Данные не передаются 3-м лицам
 
+				.b-main__why
+					.b-why
+						.b-why__title Почему выбирают нас?
+						.b-why__content
+							.b-why__item
+								.b-why__image
+									img(src='/assets/images/why-time.png', alt='')
+								.b-why__text Рассмотрение
+									br
+									| в течение 
+									br
+									| часа
+							.b-why__item
+								.b-why__image
+									img(src='/assets/images/why-agent.png', alt='')
+								.b-why__text Выезд агента 
+									br
+									| для оценки
+									br
+									| бесплатно
+							.b-why__item
+								.b-why__image
+									img(src='/assets/images/why-price.png', alt='')
+								.b-why__text Оценка объекта — 
+									br
+									| 90% от рыночной
+									br
+									| стоимости
+							.b-why__item
+								.b-why__image
+									img(src='/assets/images/why-solution.png', alt='')
+								.b-why__text Принятие 
+									br
+									| решения выкупа
+									br
+									| за 1 день
+							.b-why__item
+								.b-why__image
+									img(src='/assets/images/why-money.png', alt='')
+								.b-why__text Временный 
+									br
+									| займ на время 
+									br
+									| оформления
+						.b-why__footer
+							img.b-why__logo(src='/assets/images/logo-white.png', alt='')
+							.b-why__slogan 21 год на рынке
+
+		.b-page__line.b-page__line--green
+			.b-special
+				.b-special__content
+					.b-special__title Регистрация сделки в подарок!
+					.b-special__counter
+						.b-counter
+							.b-counter__title Осталось:
+							.b-counter__content#js-countdown
+					.b-special__list
+						ul.b-list
+							li.b-list__item.b-list__item--checked Составление договора и последующая регистрация в РОСРЕЕСТРЕ
+							li.b-list__item.b-list__item--checked Проверка и пересчет денежных средств в Банке
+							li.b-list__item.b-list__item--checked Оплата банковской депозитарной ячейки
+							li.b-list__item.b-list__item--checked Бесплатная консультация юриста
+							li.b-list__item.b-list__item--checked Вы не оплачиваете услуги агентства при срочном выкупе
+				.b-special__form
+					.b-form.b-form--blue
+						.b-form__title.b-form__title--white
+							span Оставьте заявку
+							| мы свяжемся с вами в течение 5 минут
+						.b-form__fieldset.b-form__fieldset--colum
+							.b-form__group
+								input.b-input.b-input--white(name='phone', type='text', placeholder='+7 (123) 456-78-89')
+							.b-form__button
+								a.b-button.b-button--send(name='submit', href='#') Отправить
+							.b-form__text Мы свяжемся с вами в течение 5 минут
+							.b-form__data 
+								img(src='/assets/images/icon-data--white.png', alt='')
+								| &nbsp;&nbsp;Данные не передаются 3-м лицам
+
+		.b-page__line.b-page__line--white
+			.b-process
+				.b-process__title Продажа квартиры за 3-5 дней
+				.b-process__step
+					.b-step
+						.b-step__item
+							.b-step__day 1 
+								span день
+							.b-step__text Вы оставляете заявку 
+								br
+								| на сайте или звоните нам
+								br
+								br
+								| В этот же день к Вам выезжает 
+								br
+								| эксперт по оценке объекта,
+								br
+								| оценка стоимости объекта
+						.b-step__item.b-step__item--arrow
+							img.b-step__arrow(src='/assets/images/icon-arrow.png', alt='')
+						.b-step__item
+							.b-step__day 2-3 
+								span день
+							.b-step__text проверка юридической
+								br
+								| чистоты объекта
+								br
+								br
+								| Подготовка документов
+								br
+								| к сделке
+						.b-step__item.b-step__item--arrow
+							img.b-step__arrow(src='/assets/images/icon-arrow.png', alt='')
+						.b-step__item
+							.b-step__day 4-5 
+								span день
+							.b-step__text Проведение сделки
+								br
+								| через нотариуса
+								br
+								br
+								| Получение денежных 
+								br 
+								| средств через 3 дня
+				.b-process__document
+					.b-document
+						.b-document__title какие документы нужны?
+						.b-document__text Минимальные требования к документам при срочном выкупе недвижимости
+						.b-document__list
+							.b-document__item
+								.b-document__icon
+									img(src='/assets/images/icon-pasport.png', alt='')
+								.b-document__name
+									b ПАСПОРТ ГРАЖДАНИНА РФ
+									span возраст от 18 лет
+							.b-document__item
+								.b-document__icon
+									img(src='/assets/images/icon-documents.png', alt='')
+								.b-document__name
+									b ДОКУМЕНТЫ
+									span на недвижимость
+		.b-page__line.b-page__line--green
+			.b-sms
+				.b-sms__title 
+					img(src='/assets/images/icon-mobile.png')
+					| Оценка по СМС
+				.b-sms__text Задача организации, в особенности же постоянный количественный рост и сфера нашей активности в значительной степени обуславливает создание новых предложений.
+				.b-sms__form
+					.b-form
+						.b-form__group
+							a.b-button.b-button--send(name='submit', href='#') Получить оценку
+							.b-form__data 
+								img(src='/assets/images/icon-data.png', alt='')
+								| &nbsp;Данные не передаются 3-м лицам
+		.b-page__line.b-page__line--white
+			.b-calc
+				.b-calc__title Узнайте реальную стоимость вашего объекта
+				.b-calc__form
+					.b-form
+						.b-form__step Шаг 1: 
+							span введите ожидаемую стоимость вашего объекта
+						.b-form__group.b-form__group--flex
+							input.b-input.b-input--text.b-input--price(name='price', type='text', placeholder='')
+							select.b-input.b-input--select.b-input--green
+								option ₽
+								option $
+								option €
+						.b-form__step Шаг 2: 
+							span данные вашего объекта
+						.b-form__group.b-form__group--flex
+							.b-form__checkbox
+								input.b-input.b-input--checkbox#i-c-flat(name='type', type='radio', checked=true, value='Квартира')
+								label.b-label.b-label--checkbox(for='i-c-flat') Квартира
+							.b-form__checkbox
+								input.b-input.b-input--checkbox(name='type', type='radio', value='Комната')
+								label.b-label.b-label--checkbox(for='i-c-') Комната
+							.b-form__checkbox
+								input.b-input.b-input--checkbox(name='type', type='radio', value='Доля')
+								label.b-label.b-label--checkbox(for='i-c-') Доля
+							.b-form__checkbox
+								input.b-input.b-input--checkbox(name='type', type='radio', value='Дом')
+								label.b-label.b-label--checkbox(for='i-c-house') Дом
+							.b-form__checkbox
+								input.b-input.b-input--checkbox(name='type', type='radio', value='Дом')
+								label.b-label.b-label--checkbox(for='i-c-house') Участок
+						.b-form__fieldset.b-form__fieldset--calc
+							.b-form__group.b-form__group--calc
+								label.b-label.b-label--select(for='i-c-type-house') Тип дома
+								select.b-input.b-input--select.b-input--blue(name='type-house')
+									option Выбрать
+									option Тип дома
+							.b-form__group.b-form__group--calc
+								label.b-label.b-label--select(for='i-c-rooms') количество комнат
+								select.b-input.b-input--select.b-input--blue(name='rooms')
+									option Выбрать
+									option 1
+									option 2
+									option 3
+							.b-form__group.b-form__group--calc
+								label.b-label.b-label--select(for='i-c-etage') этаж
+								select.b-input.b-input--select.b-input--blue(name='etage')
+									option Выбрать
+									option 1
+							.b-form__group.b-form__group--calc
+								label.b-label.b-label--select(for='i-c-etage') общая площадь
+								input.b-input.b-input--blue(type='text', name='square', placeholder='Введите площадь, м²')
+						.b-form__fieldset.b-form__fieldset--calc
+							.b-form__group.b-form__group--calc
+								label.b-label.b-label--select(for='i-c-remont') качество ремонта
+								select.b-input.b-input--select.b-input--blue(name='remont')
+									option Выбрать
+									option Нет
+							.b-form__group.b-form__group--calc
+								label.b-label.b-label--select(for='i-c-age') возраст
+								select.b-input.b-input--select.b-input--blue(name='age')
+									option Выбрать
+									option 18
+							.b-form__group.b-form__group--calc
+								label.b-label.b-label--select(for='i-c-balcon') Балкон
+								select.b-input.b-input--select.b-input--blue(name='balcon')
+									option Выбрать
+						.b-form__button
+							a.b-button.b-button--send(name='submit', href='#') узнайте стоимость
+							.b-form__data 
+								img(src='/assets/images/icon-data.png', alt='')
+								| &nbsp;Данные не передаются 3-м лицам
+
+		.b-page__line.b-page__line--blue
+			.b-about
+				.b-about__title О компании
+				.b-about__text 
+					p Уже 21 год Московская Городская Служба Недвижимости оказывает качественные и доступные услуги, ориентируясь на потребности клиентов и учитывая тенденции на рынке недвижимости.
+					.b-about__info
+						img.b-about__logo(src='/assets/images/logo-white.png', alt='')
+						.b-about__slogan 21 год на рынке
+					p С 1999 года агентство МГСН, по результатам ежегодного рейтинга журнала "ЭКСПЕРТ", входит в число 100 российских компаний с лучшей репутацией.
+					p С 2000 года компания становится уполномоченным дилером Правительства Москвы по реализации муниципального жилья и входит в пятерку лидеров среди агентств недвижимости Москвы.
+					p На сегодняшний день компания успешно совершает срочные выкупы за счет собственных средств 
+
+		.b-page__line.b-page__line--green
+			.b-consultants
+				.b-consultants__item
+					.b-consultant
+						img.b-consultant__image(src='/assets/images/consultant-nahschunov.png', alt='')
+						.b-consultant__name Роман Нахшунов
+						.b-consultant__work Руководитель проекта
+				.b-consultants__item
+					.b-consultant
+						img.b-consultant__image(src='/assets/images/consultant-luzgina.png', alt='')
+						.b-consultant__name Ярослава Лузгина
+						.b-consultant__work Ведущий эксперт
+				.b-consultants__item
+					.b-consultant
+						img.b-consultant__image(src='/assets/images/consultant-kovalenko.png', alt='')
+						.b-consultant__name Алёна коваленко
+						.b-consultant__work Руководитель проекта
+
+		.b-page__line.b-page__line--white
+			.b-results
+				.b-results__title Наши результаты (недавно выкупленные объекты)
+				.b-results__list
+					.b-results__item
+						img.b-results__image(src='/assets/images/results-image-1.png')
+						.b-results__description м. Нагорная, ул. Ремизова, д. 15 1- комн кв-ра  на 1/12-  этажного блочного дома. 35 метров общей площадью  В квартире зарегистрированы третьи лица +находилась под залогом в кредитной организации (выкупили за 2 дня , выдали аванс в день обращения)
+					.b-results__item
+						img.b-results__image(src='/assets/images/results-image-1.png')
+						.b-results__description м. Нагорная, ул. Ремизова, д. 15 1- комн кв-ра  на 1/12-  этажного блочного дома. 35 метров общей площадью  В квартире зарегистрированы третьи лица +находилась под залогом в кредитной организации (выкупили за 2 дня , выдали аванс в день обращения)
+					.b-results__item
+						img.b-results__image(src='/assets/images/results-image-1.png')
+						.b-results__description м. Нагорная, ул. Ремизова, д. 15 1- комн кв-ра  на 1/12-  этажного блочного дома. 35 метров общей площадью  В квартире зарегистрированы третьи лица +находилась под залогом в кредитной организации (выкупили за 2 дня , выдали аванс в день обращения)
+
+		.b-page__line.b-page__line--gray
+			.b-reviews
+				.b-reviews__title Отзывы наших клиентов
+				.b-reviews__list
+					.b-reviews__item
+						.b-results__text В январе 2015 году, когда встал вопрос покупки квартиры, подруга порекомендовала мне обратиться к Станиславу (МГСН отделение Пресня). Время для решения вопросов с недвижимостью было не лучшее и, если бы не его профессионализм, понимание рынка, нацеленность на результат, 100% защита моих интересов и, что немало важно, моральная поддержка, не знаю, чем бы завершилась та эпопея. С тех пор я уже ни один раз обращалась к Станиславу и рекомендовала его друзьям и родственникам. Мы все остались очень довольны его работой. Станислав, удачи вам и, уверена, еще посотрудничаем. 
+						.b-results__author С уважением, Наталья
+					.b-reviews__item
+						.b-results__text Хотим поблагодарить Романа  . Ранее мы обращались в другое агентство, но квартира не продавалась более полугода. Роману удалось продать наше квартиру за неделю! Кроме того, он учел все наши пожелания и запросы относительно покупки квартиры. Теперь мы живем в квартире мечты! Спасибо Вам за терпение, профессионализм, гибкость, готовность отвечать на множество вопросов и за отстаивание наших интересов. Мы очень довольны, большое человеческое спасибо. На Вас можно положиться. Самая высокая оценка! 
+						.b-results__author С уважением, Георгий
+					.b-reviews__item
+						.b-results__text Мария, выражаем Вам слова искренней благодарности за успешное сопровождение и завершение нашей сделки. Успешное завершение сделки является результатом Вашей высокопрофессиональной, ответственной и оперативной работы. Ваше уважительное и внимательное отношение к пожеланиям клиентов позволяют быстро найти правильные и взаимовыгодные решения. Желаем Вам дальнейших успехов в Вашей профессиональной деятельности! Большое Вам спасибо! 
+						.b-results__author С уважением, Ольга
+				.b-reviews__form
+					.b-form__button
+							a.b-button.b-button--send(name='submit', href='#') оставить отзыв
+
+		.b-page__line.b-page__line--blue
+			.b-contacts
+				.b-contacts__title Контакты
+				.b-contacts__list
+					.b-contacts__item
+						.b-contacts__title Адрес:
+						.b-contacts__text 143400, г. Москва, Пресненский Вал 8 к.1
+					.b-contacts__item
+						.b-contacts__title Телефон:
+						.b-contacts__text +7 (495) 123-47-04
+					.b-contacts__item
+						.b-contacts__title график работы:
+						.b-contacts__text Пн-пт 09:00 - 18:00
+		.b-page__line.b-page__line--map
+			.b-map
+			.b-map__content
+				.b-map__form
+					.b-form.b-form--blue
+						.b-form__title.b-form__title--white Оставьте заявку мы свяжемся с вами в течение 5 минут
+						.b-form__fieldset
+							.b-form__group
+								input.b-input.b-input--text(name='phone', type='text', placeholder='+7 (123) 456-78-89')
+							.b-form__button
+								a.b-button.b-button--send(name='submit', href='#') Отправить
+							.b-form__text Мы свяжемся с вами в течение 5 минут
+							.b-form__data 
+								img(src='/assets/images/icon-data.png', alt='')
+								| &nbsp;Данные не передаются 3-м лицам
 		
 		// build:js /assets/scripts/vendor.js
 		// bower:js
@@ -79,7 +393,7 @@ html.no-js(lang="ru")
 		// endbuild
 		
 		// build:js /assets/scripts/plugins.js
-		script(src="/../bower_components/bootstrap/js/affix.js")
+		script(src="/../bower_components/jquery-form-styler/jquery.formstyler.js")
 		// endbuild
 		
 		// build:js /assets/scripts/main.js
