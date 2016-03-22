@@ -5,9 +5,11 @@
 doctype html
 html.no-js(lang="ru")
 	head
-		meta(charset="utf-8")
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		
 		title= pageTitle
-		meta(name="description", content="")
+		meta(name='description', content="")
 		meta(http-equiv="X-UA-Compatible", content="IE=edge")
 
 		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700')
@@ -58,7 +60,7 @@ html.no-js(lang="ru")
 					.b-main__box выдаем аванс в день обращения
 
 				.b-main__form
-					.b-form
+					form.b-form
 						.b-form__title Оставьте заявку мы свяжемся с вами в течение 5 минут
 						.b-form__fieldset
 							.b-form__group.b-form__group--main
@@ -135,7 +137,7 @@ html.no-js(lang="ru")
 							li.b-list__item.b-list__item--checked Бесплатная консультация юриста
 							li.b-list__item.b-list__item--checked Вы не оплачиваете услуги агентства при срочном выкупе
 				.b-special__form
-					.b-form.b-form--blue
+					form.b-form.b-form--blue
 						.b-form__title.b-form__title--white
 							span Оставьте заявку
 							| мы свяжемся с вами в течение 5 минут
@@ -217,7 +219,7 @@ html.no-js(lang="ru")
 					| Оценка по СМС
 				.b-sms__text Задача организации, в особенности же постоянный количественный рост и сфера нашей активности в значительной степени обуславливает создание новых предложений.
 				.b-sms__form
-					.b-form
+					form.b-form
 						.b-form__group
 							a.b-button.b-button--send(name='submit', href='#') Получить оценку
 							.b-form__data 
@@ -227,7 +229,7 @@ html.no-js(lang="ru")
 			.b-calc
 				.b-calc__title Узнайте реальную стоимость вашего объекта
 				.b-calc__form
-					.b-form
+					form.b-form
 						.b-form__step Шаг 1: 
 							span введите ожидаемую стоимость вашего объекта
 						.b-form__group.b-form__group--flex
@@ -240,26 +242,28 @@ html.no-js(lang="ru")
 							span данные вашего объекта
 						.b-form__group.b-form__group--flex
 							.b-form__checkbox
-								input.b-input.b-input--checkbox#i-c-flat(name='type', type='radio', checked=true, value='Квартира')
+								input.b-input.b-input--checkbox#i-c-flat(name='object_type', type='radio', checked=true, value='Квартира')
 								label.b-label.b-label--checkbox(for='i-c-flat') Квартира
 							.b-form__checkbox
-								input.b-input.b-input--checkbox(name='type', type='radio', value='Комната')
-								label.b-label.b-label--checkbox(for='i-c-') Комната
+								input.b-input.b-input--checkbox#i-c-room(name='object_type', type='radio', value='Комната')
+								label.b-label.b-label--checkbox(for='i-c-room') Комната
 							.b-form__checkbox
-								input.b-input.b-input--checkbox(name='type', type='radio', value='Доля')
-								label.b-label.b-label--checkbox(for='i-c-') Доля
+								input.b-input.b-input--checkbox#i-c-share(name='object_type', type='radio', value='Доля')
+								label.b-label.b-label--checkbox(for='i-c-share') Доля
 							.b-form__checkbox
-								input.b-input.b-input--checkbox(name='type', type='radio', value='Дом')
+								input.b-input.b-input--checkbox#i-c-house(name='object_type', type='radio', value='Дом')
 								label.b-label.b-label--checkbox(for='i-c-house') Дом
 							.b-form__checkbox
-								input.b-input.b-input--checkbox(name='type', type='radio', value='Дом')
-								label.b-label.b-label--checkbox(for='i-c-house') Участок
+								input.b-input.b-input--checkbox#i-c-lot(name='object_type', type='radio', value='Дом')
+								label.b-label.b-label--checkbox(for='i-c-lot') Участок
 						.b-form__fieldset.b-form__fieldset--calc
 							.b-form__group.b-form__group--calc
 								label.b-label.b-label--select(for='i-c-type-house') Тип дома
 								select.b-input.b-input--select.b-input--blue(name='type-house')
 									option Выбрать
-									option Тип дома
+									option Панель
+									option Кирпич
+									option Монолит
 							.b-form__group.b-form__group--calc
 								label.b-label.b-label--select(for='i-c-rooms') количество комнат
 								select.b-input.b-input--select.b-input--blue(name='rooms')
@@ -267,11 +271,20 @@ html.no-js(lang="ru")
 									option 1
 									option 2
 									option 3
+									option 4
+									option 5
+									option 6
+									option 7
+									option 8
+									option 9
+									option 10
 							.b-form__group.b-form__group--calc
 								label.b-label.b-label--select(for='i-c-etage') этаж
+								- var n = 1
 								select.b-input.b-input--select.b-input--blue(name='etage')
 									option Выбрать
-									option 1
+									while n < 50
+										option= n++
 							.b-form__group.b-form__group--calc
 								label.b-label.b-label--select(for='i-c-etage') общая площадь
 								input.b-input.b-input--blue(type='text', name='square', placeholder='Введите площадь, м²')
@@ -280,16 +293,29 @@ html.no-js(lang="ru")
 								label.b-label.b-label--select(for='i-c-remont') качество ремонта
 								select.b-input.b-input--select.b-input--blue(name='remont')
 									option Выбрать
-									option Нет
+									option Под ремонт
+									option Муниципальная отделка
+									option Среднее
+									option Хорошее
+									option Евро
+									option Элит
 							.b-form__group.b-form__group--calc
 								label.b-label.b-label--select(for='i-c-age') возраст
+								- var n = 1
 								select.b-input.b-input--select.b-input--blue(name='age')
 									option Выбрать
-									option 18
+									while n < 100
+										option= n++
 							.b-form__group.b-form__group--calc
 								label.b-label.b-label--select(for='i-c-balcon') Балкон
 								select.b-input.b-input--select.b-input--blue(name='balcon')
 									option Выбрать
+									option Один балкон
+									option Два балкона
+									option Три балкона
+									option Одна лоджия
+									option Две лоджии
+									option Три лоджии
 						.b-form__button
 							a.b-button.b-button--send(name='submit', href='#') узнайте стоимость
 							.b-form__data 
@@ -310,21 +336,23 @@ html.no-js(lang="ru")
 
 		.b-page__line.b-page__line--green
 			.b-consultants
-				.b-consultants__item
-					.b-consultant
-						img.b-consultant__image(src='/assets/images/consultant-nahschunov.png', alt='')
-						.b-consultant__name Роман Нахшунов
-						.b-consultant__work Руководитель проекта
-				.b-consultants__item
-					.b-consultant
-						img.b-consultant__image(src='/assets/images/consultant-luzgina.png', alt='')
-						.b-consultant__name Ярослава Лузгина
-						.b-consultant__work Ведущий эксперт
-				.b-consultants__item
-					.b-consultant
-						img.b-consultant__image(src='/assets/images/consultant-kovalenko.png', alt='')
-						.b-consultant__name Алёна коваленко
-						.b-consultant__work Руководитель проекта
+				.b-consultants__title Вас консультируют:
+				.b-consultants__list
+					.b-consultants__item
+						.b-consultant
+							img.b-consultant__image(src='/assets/images/consultant-nahschunov.png', alt='')
+							.b-consultant__name Роман Нахшунов
+							.b-consultant__work Руководитель проекта
+					.b-consultants__item
+						.b-consultant
+							img.b-consultant__image(src='/assets/images/consultant-luzgina.png', alt='')
+							.b-consultant__name Ярослава Лузгина
+							.b-consultant__work Ведущий эксперт
+					.b-consultants__item
+						.b-consultant
+							img.b-consultant__image(src='/assets/images/consultant-kovalenko.png', alt='')
+							.b-consultant__name Алёна коваленко
+							.b-consultant__work Руководитель проекта
 
 		.b-page__line.b-page__line--white
 			.b-results
@@ -354,7 +382,7 @@ html.no-js(lang="ru")
 						.b-results__text Мария, выражаем Вам слова искренней благодарности за успешное сопровождение и завершение нашей сделки. Успешное завершение сделки является результатом Вашей высокопрофессиональной, ответственной и оперативной работы. Ваше уважительное и внимательное отношение к пожеланиям клиентов позволяют быстро найти правильные и взаимовыгодные решения. Желаем Вам дальнейших успехов в Вашей профессиональной деятельности! Большое Вам спасибо! 
 						.b-results__author С уважением, Ольга
 				.b-reviews__form
-					.b-form__button
+					form.b-form__button
 							a.b-button.b-button--send(name='submit', href='#') оставить отзыв
 
 		.b-page__line.b-page__line--blue
@@ -362,29 +390,52 @@ html.no-js(lang="ru")
 				.b-contacts__title Контакты
 				.b-contacts__list
 					.b-contacts__item
-						.b-contacts__title Адрес:
-						.b-contacts__text 143400, г. Москва, Пресненский Вал 8 к.1
+						.b-contacts__name Адрес:
+						.b-contacts__text 143400, г. Москва, 
+							br
+							| Пресненский Вал 8 к.1
 					.b-contacts__item
-						.b-contacts__title Телефон:
+						.b-contacts__name Телефон:
 						.b-contacts__text +7 (495) 123-47-04
 					.b-contacts__item
-						.b-contacts__title график работы:
+						.b-contacts__name график работы:
 						.b-contacts__text Пн-пт 09:00 - 18:00
 		.b-page__line.b-page__line--map
-			.b-map
+			.b-map#ymap
 			.b-map__content
 				.b-map__form
-					.b-form.b-form--blue
-						.b-form__title.b-form__title--white Оставьте заявку мы свяжемся с вами в течение 5 минут
-						.b-form__fieldset
+					form.b-form.b-form--blue
+						.b-form__title.b-form__title--white 
+							span Оставьте заявку 
+							| мы свяжемся с вами в течение 5 минут
+						.b-form__fieldset.b-form__fieldset--colum
 							.b-form__group
-								input.b-input.b-input--text(name='phone', type='text', placeholder='+7 (123) 456-78-89')
+								input.b-input.b-input--white(name='phone', type='text', placeholder='+7 (123) 456-78-89')
 							.b-form__button
 								a.b-button.b-button--send(name='submit', href='#') Отправить
 							.b-form__text Мы свяжемся с вами в течение 5 минут
 							.b-form__data 
-								img(src='/assets/images/icon-data.png', alt='')
+								img(src='/assets/images/icon-data--white.png', alt='')
 								| &nbsp;Данные не передаются 3-м лицам
+		
+		script(src='http://api-maps.yandex.ru/2.1/?lang=ru_RU', type='text/javascript')
+		script.
+			var ymap_coordinates = [55.765362,37.564913];
+			ymaps.ready(function(){
+				ymap = new ymaps.Map('ymap', {
+					center: ymap_coordinates,
+					zoom: 15,
+					controls: [/*'zoomControl',*/ 'typeSelector'],
+					autoFitToViewport: 'ifNull'
+				});
+				var placemark = new ymaps.Placemark(ymap_coordinates, {}, {
+					iconLayout: 'default#image',
+					iconImageHref: '/assets/images/ymap.png',
+					iconImageSize: [82, 127],
+					iconImageOffset: [-41, -127]
+				});
+				ymap.geoObjects.add(placemark);
+			});
 		
 		// build:js /assets/scripts/vendor.js
 		// bower:js
