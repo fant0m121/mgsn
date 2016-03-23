@@ -17,6 +17,8 @@ html.no-js(lang="ru")
 		// build:css /assets/styles/vendor.css
 		// bower:css
 		link(rel='stylesheet', href='/../bower_components/bootstrap/dist/css/bootstrap.css')
+		link(rel='stylesheet', href='/../bower_components/owl.carousel/dist/assets/owl.carousel.min.css')
+		link(rel='stylesheet', href='/../bower_components/owl.carousel/dist/assets/owl.theme.green.css')
 		// endbower
 		// endbuild
 
@@ -29,7 +31,7 @@ html.no-js(lang="ru")
 		// endbuild
 	
 	body.b-page
-		.b-page__line
+		.b-page__line.b-page__line--white.js-header
 			.b-header
 				.b-header__logo
 					img.b-logo(src='assets/images/logo.png')
@@ -38,17 +40,16 @@ html.no-js(lang="ru")
 					a.b-button.b-button--green.b-button--callback(href='#') Обратный звонок
 				
 				.b-header__phone +7 (495) 123-47-04
-		
-		.b-page__line
+			
 			.b-menu
-				a.b-menu__item(href='#') Спецпредложения
-				a.b-menu__item(href='#') Процесс
-				a.b-menu__item(href='#') Необходимые документы
-				a.b-menu__item(href='#') Оценка по СМС
-				a.b-menu__item(href='#') О компании
-				a.b-menu__item(href='#') Отзывы
-				a.b-menu__item(href='#') Контакты
-
+				a.b-menu__item.js-scroll-animate(href='#special') Спецпредложения
+				a.b-menu__item.js-scroll-animate(href='#process') Процесс
+				a.b-menu__item.js-scroll-animate(href='#document') Необходимые документы
+				a.b-menu__item.js-scroll-animate(href='#sms') Оценка по СМС
+				a.b-menu__item.js-scroll-animate(href='#about') О компании
+				a.b-menu__item.js-scroll-animate(href='#reviews') Отзывы
+				a.b-menu__item.js-scroll-animate(href='#contacts') Контакты
+		
 		.b-page__line.b-page__line--main
 			.b-main
 				.b-main__title
@@ -122,7 +123,7 @@ html.no-js(lang="ru")
 							.b-why__slogan 21 год на рынке
 
 		.b-page__line.b-page__line--green
-			.b-special
+			.b-special#special
 				.b-special__content
 					.b-special__title Регистрация сделки в подарок!
 					.b-special__counter
@@ -152,7 +153,7 @@ html.no-js(lang="ru")
 								| &nbsp;&nbsp;Данные не передаются 3-м лицам
 
 		.b-page__line.b-page__line--white
-			.b-process
+			.b-process#process
 				.b-process__title Продажа квартиры за 3-5 дней
 				.b-process__step
 					.b-step
@@ -196,7 +197,7 @@ html.no-js(lang="ru")
 								br 
 								| средств через 3 дня
 				.b-process__document
-					.b-document
+					.b-document#document
 						.b-document__title какие документы нужны?
 						.b-document__text Минимальные требования к документам при срочном выкупе недвижимости
 						.b-document__list
@@ -213,7 +214,7 @@ html.no-js(lang="ru")
 									b ДОКУМЕНТЫ
 									span на недвижимость
 		.b-page__line.b-page__line--green
-			.b-sms
+			.b-sms#sms
 				.b-sms__title 
 					img(src='/assets/images/icon-mobile.png')
 					| Оценка по СМС
@@ -323,7 +324,7 @@ html.no-js(lang="ru")
 								| &nbsp;Данные не передаются 3-м лицам
 
 		.b-page__line.b-page__line--blue
-			.b-about
+			.b-about#about
 				.b-about__title О компании
 				.b-about__text 
 					p Уже 21 год Московская Городская Служба Недвижимости оказывает качественные и доступные услуги, ориентируясь на потребности клиентов и учитывая тенденции на рынке недвижимости.
@@ -333,6 +334,24 @@ html.no-js(lang="ru")
 					p С 1999 года агентство МГСН, по результатам ежегодного рейтинга журнала "ЭКСПЕРТ", входит в число 100 российских компаний с лучшей репутацией.
 					p С 2000 года компания становится уполномоченным дилером Правительства Москвы по реализации муниципального жилья и входит в пятерку лидеров среди агентств недвижимости Москвы.
 					p На сегодняшний день компания успешно совершает срочные выкупы за счет собственных средств 
+		.b-page__line.b-page__line--white
+			.b-banks
+				.b-banks__title банки партнеры
+				.b-banks__list
+					.b-banks__item
+						img(src='/assets/images/bank-mts.png', alt='')
+					.b-banks__item
+						img(src='/assets/images/bank-vtb24.png', alt='')
+					.b-banks__item
+						img(src='/assets/images/bank-moscva.png', alt='')
+					.b-banks__item
+						img(src='/assets/images/bank-raiff.png', alt='')
+					.b-banks__item
+						img(src='/assets/images/bank-uni.png', alt='')
+					.b-banks__item
+						img(src='/assets/images/bank-ros.png', alt='')
+					.b-banks__item
+						img(src='/assets/images/bank-absolut.png', alt='')
 
 		.b-page__line.b-page__line--green
 			.b-consultants
@@ -357,21 +376,76 @@ html.no-js(lang="ru")
 		.b-page__line.b-page__line--white
 			.b-results
 				.b-results__title Наши результаты (недавно выкупленные объекты)
-				.b-results__list
+				.b-results__list.owl-theme.owl-carousel.js-carousel
 					.b-results__item
 						img.b-results__image(src='/assets/images/results-image-1.png')
-						.b-results__description м. Нагорная, ул. Ремизова, д. 15 1- комн кв-ра  на 1/12-  этажного блочного дома. 35 метров общей площадью  В квартире зарегистрированы третьи лица +находилась под залогом в кредитной организации (выкупили за 2 дня , выдали аванс в день обращения)
+						.b-results__description М. ОКТЯБРЬСКАЯ, УЛ. ШАБОЛОВКА Д.17 
+							br
+							br
+							| 2-КОМНАТНАЯ КВАРТИРА 50 М.КВ 5/10 КИРПИЧНОГО ДОМА. КВАРТИРА БЫЛА ПОД ЗАЛОГОМ У БАНКА. ВЫКУПИЛИ ЗА 3 ДНЯ, ВЫДАЛИ АВАНС ДЛЯ ПОГАШЕНИЯ ПРОСРОЧКИ ПЛАТЕЖЕЙ В ДЕНЬ ОБРАЩЕНИЯ. 
+
 					.b-results__item
-						img.b-results__image(src='/assets/images/results-image-1.png')
-						.b-results__description м. Нагорная, ул. Ремизова, д. 15 1- комн кв-ра  на 1/12-  этажного блочного дома. 35 метров общей площадью  В квартире зарегистрированы третьи лица +находилась под залогом в кредитной организации (выкупили за 2 дня , выдали аванс в день обращения)
+						img.b-results__image(src='/assets/images/results-image-2.png')
+						.b-results__description М.УЛИЦА 1905 ГОДА, УЛ.ПРЕСНЕНСКИЙ ВАЛ Д.5
+							br
+							br
+							| 2-Х КОМНАТНАЯ КВАРТИРА  57 М.КВ. ,1/8 КИРПИЧНОГО ДОМА. КВАРТИРА С ДОЛГАМИ ПО КОММУНАЛЬНЫМ ПЛАТЕЖАМ .ВЫДАЛИ АВАНС НА СЛЕДУЮЩИЙ ДЕНЬ ПОСЛЕ ОБРАЩЕНИЯ. ПОСЛЕ ПОГАШЕНИЯ ДОЛГОВ , ВЫКУПИЛИ ЗА ДВА  ДНЯ.
 					.b-results__item
-						img.b-results__image(src='/assets/images/results-image-1.png')
-						.b-results__description м. Нагорная, ул. Ремизова, д. 15 1- комн кв-ра  на 1/12-  этажного блочного дома. 35 метров общей площадью  В квартире зарегистрированы третьи лица +находилась под залогом в кредитной организации (выкупили за 2 дня , выдали аванс в день обращения)
+						img.b-results__image(src='/assets/images/results-image-3.png')
+						.b-results__description Г.ЛЮБЕРЦЫ, УЛ.ИНИЦИАТИВНАЯ 1К3
+							br
+							br
+							| 1-КОМНАТНАЯ КВАРТИРА 37 М.КВ. ,3/14 ПАНЕЛЬНОГО ДОМА. СОБСТВЕННИКУ СРОЧНО ТРЕБОВАЛИСЬ ДЕНЕЖНЫЕ СРЕДСТВА, НЕ БЫЛО СВИДЕТЕЛЬСТВА О СОБСТВЕННОСТИ. ВОССТАНОВИЛИ ДОКУМЕНТЫ. ВЫКУПИЛИ ЗА ПЯТЬ ДНЕЙ.
+					.b-results__item
+						img.b-results__image(src='/assets/images/results-image-4.png')
+						.b-results__description М. ЦАРИЦЫНО, УЛ.ЭЛЕВАТОРНАЯ 1К3
+							br
+							br
+							| 3-КОМНАТНАЯ КВАРТИРА 60 М.КВ.  10/17 ПАНЕЛЬНОГО ДОМА. КВАРТИРА ПОД ИПОТЕКОЙ. СНЯЛИ ОБРЕМЕНЕНИЕ С ПРИВЛЕЧЕНИЕМ СОБСТВЕННЫХ СРЕДСТВ. ВЫКУПИЛИ ЗА ТРИ ДНЯ.
+					.b-results__item
+						img.b-results__image(src='/assets/images/results-image-5.png')
+						.b-results__description Г.ДОЛГОПРУДНЫЙ, УЛ.МАЯКОВСКОГО 33
+							br
+							br
+							| 2-Х КОМНАТНАЯ КВАРТИРА , 58 М.КВ., 2/9 КИРПИЧНОГО ДОМА. ПОТРЕБНОСТЬ В ОБМЕНЕ И ПЕРЕЕЗДЕ.  2 ДОЛИ ПО ½ . ВЫКУПИЛИ ЗА ТРИ ДНЯ. 
+					.b-results__item
+						img.b-results__image(src='/assets/images/results-image-6.png')
+						.b-results__description М.АЛТУФЬЕВО УЛ.АБРАМЦЕВСКАЯ 14
+							br
+							br
+							| 3-Х КОМНАТНАЯ КВАРТИРА , 80 М.КВ. 6/12 ПАНЕЛЬНОГО ДОМА . КВАРТИРА ПОД ЗАЛОГОМ. ВЫДАЛИ АВАНС В ДЕНЬ ОБРАЩЕНИЯ. ВЫКУПИЛИ ЗА 3 ДНЯ. 
+					.b-results__item
+						img.b-results__image(src='/assets/images/results-image-7.png')
+						.b-results__description М. НОВОКОСИНО  УЛ. СУЗДАЛЬСКАЯ 36К2
+							br
+							br
+							| 1-КОМНАТНАЯ КВАРТИРА , 38 М.КВ. 3/14 ПАНЕЛЬНОГО ДОМА . СРОЧНАЯ ПРОДАЖА ДЛЯ ПОКУПКИ АЛЬТЕРНАТИВЫ. ВЫКУПИЛИ ЗА ДВА ДНЯ.
+					.b-results__item
+						img.b-results__image(src='/assets/images/results-image-8.png')
+						.b-results__description М. КУНЦЕВСКАЯ УЛ.КОЦЮБИНСКОГО 7К1
+							br
+							br
+							| 1/3 ПАНЕЛЬНОГО ДОМА , КОМНАТА В 2-Х КОМНАТНОЙ КВАРТИРЕ С ДОЛГАМИ ПО КОММУНАЛЬНЫМ ПЛАТЕЖАМ. ВЫДАЛИ АВАНС В ДЕНЬ ОБРАЩЕНИЯ. ВЫКУПИЛИ ЗА ТРИ ДНЯ. 
+					.b-results__item
+						img.b-results__image(src='/assets/images/results-image-9.png')
+						.b-results__description Г.КРАСНОГОРСК, ПАВШИНСКАЯ ПОЙМА , ПОДМОСКОВНЫЙ БУЛЬВАР 8
+							br
+							br
+							| 3-Х КОМНАТНАЯ КВАРТИРА, 65 М.КВ.  КВАРТИРА С ОБРЕМЕНЕНИЕМ. СНЯЛИ ЗАЛОГ  НА СЛЕДУЮЩИЙ ДЕНЬ ПОСЛЕ ОБРАЩЕНИЯ. ВЫКУПИЛИ ЗА ПЯТЬ ДНЕЙ.
+					.b-results__item
+						img.b-results__image(src='/assets/images/results-image-10.png')
+						.b-results__description М.САВЕЛОВСКАЯ, УЛ. ПОЛКОВАЯ 20
+							br
+							br
+							| 4-Х КОМНАТНАЯ КВАРТИРА, 108,2 М.КВ. КВАРТИРА ПОД ИПОТЕКОЙ, СНЯЛИ ОБРЕМЕНЕНИЕ. ВЫКУПИЛИ ЗА 4 ДНЯ. 
 
 		.b-page__line.b-page__line--gray
-			.b-reviews
+			.b-reviews#reviews
 				.b-reviews__title Отзывы наших клиентов
-				.b-reviews__list
+				.b-reviews__list.owl-theme.owl-carousel.js-carousel
+					.b-reviews__item
+						.b-results__text Хотим поблагодарить  Матвея (отделение МГСН Пресня) за отлично проделанную работу и профессионализм. Квартиру продали быстро и без проволочек. Матвей смог организовать большое количество просмотров за короткий срок, всю рутинную работу по оформлению документов взял на себя. И мы и наши покупатели остались очень довольны быстрой и без проблемной сделкой. С Матвеем было очень приятно иметь дело. Всем рекомендую Московскую Городскую Службу Недвижимости.
+						.b-results__author 
 					.b-reviews__item
 						.b-results__text В январе 2015 году, когда встал вопрос покупки квартиры, подруга порекомендовала мне обратиться к Станиславу (МГСН отделение Пресня). Время для решения вопросов с недвижимостью было не лучшее и, если бы не его профессионализм, понимание рынка, нацеленность на результат, 100% защита моих интересов и, что немало важно, моральная поддержка, не знаю, чем бы завершилась та эпопея. С тех пор я уже ни один раз обращалась к Станиславу и рекомендовала его друзьям и родственникам. Мы все остались очень довольны его работой. Станислав, удачи вам и, уверена, еще посотрудничаем. 
 						.b-results__author С уважением, Наталья
@@ -381,12 +455,18 @@ html.no-js(lang="ru")
 					.b-reviews__item
 						.b-results__text Мария, выражаем Вам слова искренней благодарности за успешное сопровождение и завершение нашей сделки. Успешное завершение сделки является результатом Вашей высокопрофессиональной, ответственной и оперативной работы. Ваше уважительное и внимательное отношение к пожеланиям клиентов позволяют быстро найти правильные и взаимовыгодные решения. Желаем Вам дальнейших успехов в Вашей профессиональной деятельности! Большое Вам спасибо! 
 						.b-results__author С уважением, Ольга
+					.b-reviews__item
+						.b-results__text Не верилось, что в нынешней экономической ситуации можно оперативно и при этом довольно успешно решать проблемы с недвижимостью. К счастью, благодаря замечательным деловым качествам, профессиональному подходу и доброжелательному участию Татьяны, нам удалось в неожиданно короткий срок и за достойную цену продать квартиру в Митино и тем самым реализовать давнюю семейную мечту – заиметь жилье у теплого моря. Огромное за это спасибо.
+						.b-results__author 
+					.b-reviews__item
+						.b-results__text Роман выражаем благодарность за ваш высокий профессионализм, оперативность, индивидуальный подход к клиенту и добросовестное отношение к делу. Мы смело будем рекомендовать вас и ваши деловые качества друзьям и знакомым. Обязательно обратимся к вам за помощью в дальнейшем. Приятно, когда человек получает удовольствие от своей работы и ценит интересы клиента. Роман, спасибо Вам огромное не только за профессиональный подход, но и за чисто человеческое отношение к клиентам. «…Вы отвечаете лучшим качествам специалиста по работе с недвижимостью!»
+						.b-results__author 
 				.b-reviews__form
 					form.b-form__button
 							a.b-button.b-button--send(name='submit', href='#') оставить отзыв
 
 		.b-page__line.b-page__line--blue
-			.b-contacts
+			.b-contacts#contacts
 				.b-contacts__title Контакты
 				.b-contacts__list
 					.b-contacts__item
@@ -417,10 +497,11 @@ html.no-js(lang="ru")
 							.b-form__data 
 								img(src='/assets/images/icon-data--white.png', alt='')
 								| &nbsp;Данные не передаются 3-м лицам
+		.overlay
 		
 		script(src='http://api-maps.yandex.ru/2.1/?lang=ru_RU', type='text/javascript')
 		script.
-			var ymap_coordinates = [55.765362,37.564913];
+			var ymap_coordinates = [55.765451, 37.564631];
 			ymaps.ready(function(){
 				ymap = new ymaps.Map('ymap', {
 					center: ymap_coordinates,
@@ -444,9 +525,11 @@ html.no-js(lang="ru")
 		// endbuild
 		
 		// build:js /assets/scripts/plugins.js
+		script(src="/../app/assets/scripts/libs/countdow.js")
+		script(src="/../bower_components/owl.carousel/dist/owl.carousel.min.js")
 		script(src="/../bower_components/jquery-form-styler/jquery.formstyler.js")
 		// endbuild
 		
 		// build:js /assets/scripts/main.js
-		script(src="assets/scripts/main.js")
+		script(src="/assets/scripts/main.js")
 		// endbuild

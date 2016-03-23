@@ -8,13 +8,25 @@
 body
 	padding 0
 	font-family font_regular
+	position relative
+
+.overlay
+	content url('../images/bgv13.png')
+	position absolute
+	top 0
+
+.b-page
+	padding 0
+
+	&--fixed
+		padding-top 104px
 
 .b-page__line
 	padding 0
 	background #fff
 	
 	&--main
-		background url(../images/main-bg.png) no-repeat top center
+		background url('../images/main-bg.png') no-repeat top center
 		
 	&--green
 		background cl_gren
@@ -22,22 +34,40 @@ body
 	&--blue
 		background cl_blue
 		
+	&--white
+		background #fff
+		
 	&--gray
 		background #e8e8e8
 	
 	&--map
 		position relative
+		
+	&--fixed
+		position fixed
+		top 0
+		left 0
+		right 0
+		box-shadow 0 1px 5px #000
+		z-index 1000
+		
+		.b-header
+			padding 10px 0
+		
+		.b-menu
+			padding-bottom 10px
 
 .b-header
-	width 1227px
+	width 1127px
 	margin 0 auto
 	padding-top 30px
 	padding-bottom 45px
 	display flex
 	justify-content space-between
 	align-items center
+	transition all 0.25s ease
 	
-	@media (max-width: 1227px)
+	@media (max-width: 1127px)
 		width 100%
 		padding-left  15px
 		padding-right  15px
@@ -63,11 +93,12 @@ body
 .b-menu
 	display flex
 	justify-content space-between
-	width 1227px
+	width 1127px
 	margin 0 auto
 	padding-bottom 25px
+	transition all 0.25s ease
 	
-	@media (max-width: 1227px)
+	@media (max-width: 1127px)
 		width 100%
 		padding-left  15px
 		padding-right  15px
@@ -91,15 +122,21 @@ body
 			text-align center			
 		
 		&:hover
+		&:focus
 			text-decoration none
-			color #c0c0c0
+			color cl_gren
+			outline 0
+		
+		&--active
+			text-decoration none
+			color cl_gren
 
 .b-main
-	width 1227px
+	width 1127px
 	margin 0 auto
 	padding 70px 0 0
 	
-	@media (max-width: 1227px)
+	@media (max-width: 1127px)
 		width 100%
 		padding-left  15px
 		padding-right  15px
@@ -143,7 +180,7 @@ body
 		width 960px
 		margin 0 auto
 		
-		@media (max-width: 1227px)
+		@media (max-width: 1127px)
 			width 100%
 			flex-wrap wrap
 			justify-content space-around
@@ -174,7 +211,7 @@ body
 		color #fff
 		padding 25px 0
 		
-		@media (max-width: 1227px)
+		@media (max-width: 1127px)
 			flex-wrap wrap
 			justify-content space-around
 	
@@ -230,12 +267,12 @@ body
 		font-size 30px
 
 .b-special
-	width 1227px
+	width 1127px
 	margin 0 auto
 	padding 35px 0
 	display flex
 	
-	@media (max-width: 1227px)
+	@media (max-width: 1127px)
 		width 100%
 		padding-left  15px
 		padding-right  15px
@@ -269,12 +306,57 @@ body
 			margin-right -15px
 			padding 15px
 
+.b-counter
+	padding-top: 25px;
+	margin-left 90px
+	
+	&__title
+		font-size 24px
+		color #000
+		font-family font_calibli
+		text-transform uppercase
+
+	&__content
+		display flex
+		justify-content center
+		width 655px
+
+	&__label
+		font-size 24px
+		text-align center
+		width 100%
+		color #000
+		font-family font_calibli
+
+	&__block 
+		display flex
+		flex-wrap wrap
+		justify-content flex-start
+		flex 1
+
+	&__item 
+		flex 0 0 65px
+		text-align center
+		width 65px
+		height 90px
+		background-color #fff
+		background-image linear-gradient(to top, rgba(1,1,1,.28), rgba(255,255,255,.28))
+		box-shadow 0 2px 4px rgba(1,1,1,.75)
+		color #353535
+		line-height 90px
+		font-size 55px
+		font-family font_calibli
+		
+		& + ^[1]
+			margin-left 11px
+	
+
 .b-process
-	width 1227px
+	width 1127px
 	margin 0 auto
 	padding 45px 0
 	
-	@media (max-width: 1227px)
+	@media (max-width: 1127px)
 		width 100%
 		padding-left  15px
 		padding-right  15px
@@ -301,7 +383,7 @@ body
 .b-step
 	display flex
 	
-	@media (max-width: 1227px)
+	@media (max-width: 1127px)
 		flex-wrap wrap
 		justify-content space-around
 	
@@ -381,11 +463,11 @@ body
 			display block
 
 .b-sms
-	width 1227px
+	width 1127px
 	margin 0 auto
 	padding 45px 0 28px
 	
-	@media (max-width: 1227px)
+	@media (max-width: 1127px)
 		width 100%
 		padding-left  15px
 		padding-right  15px
@@ -496,11 +578,11 @@ body
 		font-size 30px
 
 .b-consultants
-	width 1227px
+	width 1127px
 	margin 0 auto
 	padding 45px 30px 45px
 	
-	@media (max-width: 1227px)
+	@media (max-width: 1127px)
 		width 100%
 		padding-left  15px
 		padding-right  15px
@@ -524,10 +606,38 @@ body
 		display flex
 		justify-content space-between
 		
-		@media (max-width: 1227px)
+		@media (max-width: 1127px)
 			flex-wrap wrap
 			justify-content space-around
+			
+.b-banks
+	width 1127px
+	margin 0 auto
+	padding 45px 30px 45px
+	
+	@media (max-width: 1127px)
+		width 100%
+		padding-left  15px
+		padding-right  15px
 		
+	&__title
+		font-size 36px
+		color #000
+		font-family font_regular
+		text-transform uppercase
+		text-align center
+		line-height 40px
+		padding-bottom 15px
+		font-weight bold
+		
+	&__list
+		display flex
+		justify-content space-around
+		flex-wrap wrap
+		
+	&__item
+		padding 25px
+
 .b-consultant
 	text-align center
 	color #fff
@@ -549,11 +659,11 @@ body
 		border-top 0
 
 .b-results
-	width 1227px
+	width 1127px
 	margin 0 auto
 	padding 45px 30px 45px
 	
-	@media (max-width: 1227px)
+	@media (max-width: 1127px)
 		width 100%
 		padding-left  15px
 		padding-right  15px
@@ -577,7 +687,7 @@ body
 		display flex
 		justify-content space-between
 		
-		@media (max-width: 1227px)
+		@media (max-width: 1127px)
 			flex-wrap wrap
 			justify-content space-around
 		
@@ -603,7 +713,7 @@ body
 		left 0
 		padding 15px
 		color #fff
-		font-size 18px
+		font-size 16px
 		font-family font_regular
 		opacity 0
 		transition all 0.25s ease
@@ -612,11 +722,11 @@ body
 		height 100%
 
 .b-reviews		
-	width 1227px
+	width 1127px
 	margin 0 auto
 	padding 45px 30px 45px
 	
-	@media (max-width: 1227px)
+	@media (max-width: 1127px)
 		width 100%
 		padding-left  15px
 		padding-right  15px
@@ -640,7 +750,7 @@ body
 		display flex
 		justify-content space-between
 		
-		@media (max-width: 1227px)
+		@media (max-width: 1127px)
 			flex-wrap wrap
 			justify-content space-around
 		
@@ -659,11 +769,11 @@ body
 		line-height 1.2
 
 .b-contacts		
-	width 1227px
+	width 1127px
 	margin 0 auto
 	padding 45px 30px 45px
 	
-	@media (max-width: 1227px)
+	@media (max-width: 1127px)
 		width 100%
 		padding-left  15px
 		padding-right  15px
@@ -687,7 +797,7 @@ body
 		display flex
 		justify-content space-between
 		
-		@media (max-width: 1227px)
+		@media (max-width: 1127px)
 			flex-wrap wrap
 			justify-content space-around
 			justify-content flex-start
@@ -710,11 +820,11 @@ body
 	&__content
 		position absolute
 		top 0
-		width 1227px
+		width 1127px
 		transform translateX(-50%)
 		left 50%
 		
-		@media (max-width: 1227px)
+		@media (max-width: 1127px)
 			width 100%
 			position relative
 		
@@ -902,11 +1012,37 @@ body
 			@media (max-width: 768px)
 				right 10px
 
-
-	
 .b-input
 	outline 0
-	border 0
+	border 0	
+
+	&::-webkit-input-placeholder 
+		transition opacity 0.3s ease
+		opacity 1
+
+	&::-moz-placeholder
+		transition opacity 0.3s ease
+		opacity 1
+	
+	&:-moz-placeholder
+		transition opacity 0.3s ease
+		opacity 1
+	
+	&:-ms-input-placeholder
+		transition opacity 0.3s ease
+		opacity 1
+	
+	&:focus::-webkit-input-placeholder 
+		opacity 0
+
+	&:focus::-moz-placeholder
+		opacity 0
+	
+	&:focus:-moz-placeholder
+		opacity 0
+	
+	&:focus:-ms-input-placeholder
+		opacity 0
 	
 	&--text
 		background-color rgb(244, 242, 242);
@@ -1064,27 +1200,40 @@ body
 		.jq-selectbox__select 
 			border-color #f00 !important
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-	.container {
-		max-width: 730px;
-	}
 
-	/* Remove the padding we set earlier */
-	.header,
-	.marketing,
-	.footer {
-		padding-left: 0;
-		padding-right: 0;
-	}
-
-	/* Space out the masthead */
-	.header {
-		margin-bottom: 30px;
-	}
-
-	/* Remove the bottom border on the jumbotron for visual effect */
-	.jumbotron {
-		border-bottom: 0;
-	}
-}
+.owl-carousel 
+	
+	.owl-item
+		display flex
+		justify-content center
+		
+.owl-theme 
+	
+	.owl-nav
+		position absolute
+		width 100%
+		display flex
+		justify-content space-between
+		top 50%
+		margin-top -26px
+		
+	.owl-nav [class*='owl-']
+		background #0052a2
+		width 49px
+		height 52px
+		color #0052a2
+		font-size 0px
+	
+	.owl-nav	
+		
+		.owl-prev
+			background url('../images/slider-arrow-left.png') no-repeat
+			
+			&:hover
+				background url('../images/slider-arrow-left.png') no-repeat
+				
+		.owl-next
+			background url('../images/slider-arrow-right.png') no-repeat
+			
+			&:hover
+				background url('../images/slider-arrow-right.png') no-repeat

@@ -32,13 +32,14 @@ gulp.task('styles', () => {
 });
 
 gulp.task('scripts', () => {
-  return gulp.src('app/assets/scripts/**/*.js')
+  return gulp.src('app/assets/scripts/**/*.coffee')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
+    .pipe($.coffee())
     .pipe($.babel())
-    .pipe($.sourcemaps.write('.'))
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/assets/scripts'))
-    .pipe(reload({stream: true}));
+    .pipe(reload({stream: true}));;
 });
 
 function lint(files, options) {
@@ -144,7 +145,7 @@ gulp.task('serve', ['views', 'styles', 'scripts', 'fonts'], () => {
     '.tmp/fonts/**/*'
   ]).on('change', reload);
 
-  gulp.watch('app/scripts/**/*.js', ['scripts']);
+  gulp.watch('app/scripts/**/*.coffee', ['scripts']);
   gulp.watch('app/**/*.styl', ['styles']);
   gulp.watch('app/**/*.pug', ['html']);
   gulp.watch('app/fonts/**/*', ['fonts']);
@@ -175,8 +176,8 @@ gulp.task('serve:test', ['scripts'], () => {
     }
   });
 
-  gulp.watch('app/scripts/**/*.js', ['scripts']);
-  gulp.watch('test/spec/**/*.js').on('change', reload);
+  gulp.watch('app/scripts/**/*.coffee', ['scripts']);
+  gulp.watch('test/spec/**/*.coffee').on('change', reload);
   //gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
