@@ -17,8 +17,9 @@ html.no-js(lang="ru")
 		// build:css /assets/styles/vendor.css
 		// bower:css
 		link(rel='stylesheet', href='/../bower_components/bootstrap/dist/css/bootstrap.css')
-		link(rel='stylesheet', href='/../bower_components/owl.carousel/dist/assets/owl.carousel.min.css')
+		link(rel='stylesheet', href='/../bower_components/owl.carousel/dist/assets/owl.carousel.css')
 		link(rel='stylesheet', href='/../bower_components/owl.carousel/dist/assets/owl.theme.green.css')
+		link(rel='stylesheet', href='/../bower_components/magnific-popup/dist/magnific-popup.css')
 		// endbower
 		// endbuild
 
@@ -37,11 +38,13 @@ html.no-js(lang="ru")
 					img.b-logo(src='assets/images/logo.png')
 
 				.b-header__button
-					a.b-button.b-button--green.b-button--callback(href='#') Обратный звонок
+					a.b-button.b-button--green.b-button--callback.js-show-modal(href='#js-m-callback') Обратный звонок
 				
 				.b-header__phone +7 (495) 123-47-04
 			
-			.b-menu
+				.b-menu-toggle.js-menu-toggle 
+
+			.b-menu.js-menu
 				a.b-menu__item.js-scroll-animate(href='#special') Спецпредложения
 				a.b-menu__item.js-scroll-animate(href='#process') Процесс
 				a.b-menu__item.js-scroll-animate(href='#document') Необходимые документы
@@ -463,7 +466,7 @@ html.no-js(lang="ru")
 						.b-results__author 
 				.b-reviews__form
 					form.b-form__button
-							a.b-button.b-button--send(name='submit', href='#') оставить отзыв
+							a.b-button.b-button--send.js-show-modal(href='#js-m-review') оставить отзыв
 
 		.b-page__line.b-page__line--blue
 			.b-contacts#contacts
@@ -497,8 +500,57 @@ html.no-js(lang="ru")
 							.b-form__data 
 								img(src='/assets/images/icon-data--white.png', alt='')
 								| &nbsp;Данные не передаются 3-м лицам
-		.overlay
 		
+		.b-window.b-window--callback.mfp-hide#js-m-callback
+			.b-window__content
+				.b-window__form
+					form.b-form.js-form-callback(action="/", method="post")
+						.b-window__title Для заказа обратного звонка<br/> заполните форму ниже:
+						.b-form__error.js-error-callback
+						.b-form__group.b-form__group--line
+							label.b-form__label.b-form__label--icon(for="i-name--callback")
+								i.fa.fa-user
+							input.b-input.b-input--white.b-input--icon#i-name--callback(name="name", type="text", placeholder="Ваше имя")
+
+						.b-form__group.b-form__group--line
+							label.b-form__label.b-form__label--icon(for="i-phone--callback")
+								i.fa.fa-phone
+							input.b-input.b-input--white.b-input--icon#i-phone--callback(name="phone", type="text", placeholder="Телефон")
+
+						.b-form__button
+							a.b-button.b-button--send.js-send-callback(href="#") Заказать звонок
+
+					.b-form__success.js-success-callback Спасибо! Ваша заявка отправлена, <br>наш специалист свяжется с вами <br>в течение 15 минут.
+
+		.b-window.b-window--review.mfp-hide#js-m-review
+			.b-window__content
+				.b-window__form
+					form.b-form.js-form-review(action="/", method="post")
+						.b-window__title Отзыв о нашей работе
+						.b-window__note Мы уважаем Ваше мнение и обязательно ответим на Ваши обращения
+						.b-form__error.js-error-review
+						.b-form__group.b-form__group--line
+							label.b-form__label.b-form__label--icon(for="i-name--review")
+								i.fa.fa-user
+							input.b-input.b-input--white.b-input--icon#i-name--review(name="name", type="text", placeholder="Ваше имя")
+
+						.b-form__group.b-form__group--line
+							label.b-form__label.b-form__label--icon(for="i-phone--review")
+								i.fa.fa-phone
+							input.b-input.b-input--white.b-input--icon#i-phone--review(name="email", type="text", placeholder="Ваш e-mail")
+
+						.b-form__group.b-form__group--line
+							label.b-form__label.b-form__label--icon(for="i-phone--review")
+								i.fa.fa-phone
+							textarea.b-input.b-input--white.b-input--textarea#i-phone--review(name="comment", placeholder="Ваш комментарий")
+
+
+						.b-form__button
+							a.b-button.b-button--send.js-send-review(href="#") Отправить
+
+					.b-form__success.js-success-review Спасибо! Ваша заявка отправлена, наш специалист свяжется с вами <br>в течение 15 минут.
+
+
 		script(src='http://api-maps.yandex.ru/2.1/?lang=ru_RU', type='text/javascript')
 		script.
 			var ymap_coordinates = [55.765451, 37.564631];
@@ -526,6 +578,7 @@ html.no-js(lang="ru")
 		
 		// build:js /assets/scripts/plugins.js
 		script(src="/../app/assets/scripts/libs/countdow.js")
+		script(src="/../bower_components/magnific-popup/dist/jquery.magnific-popup.min.js")
 		script(src="/../bower_components/owl.carousel/dist/owl.carousel.min.js")
 		script(src="/../bower_components/jquery-form-styler/jquery.formstyler.js")
 		// endbuild

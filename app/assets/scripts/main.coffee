@@ -1,6 +1,7 @@
 $window = $(window)
 $root = $('.b-page')
 $header = $('.js-header')
+$menu = $('.js-menu')
 $menuItems = $('a[href^="#"].js-scroll-animate')
 
 scrollItems = $menuItems.map ->
@@ -56,9 +57,9 @@ throttle = (callback, limit) ->
 		), limit
 
 setClass = () ->
-	scrollTop = $root.scrollTop()
+	scrollTop = $('html').scrollTop()
 
-	if scrollTop > 0
+	if scrollTop > 11
 		$header.addClass('b-page__line--fixed')
 		$root.addClass('b-page--fixed')
 	else
@@ -68,6 +69,20 @@ setClass = () ->
 setClass();
 
 $window.on 'scroll', throttle(setClass, 100)
+
+$('.js-menu-toggle').click ->
+	$menu.toggle()
+
+$('.js-show-modal').click (event) ->
+		event.preventDefault();
+
+		$.magnificPopup.open({
+			items: {
+				src: $(this).attr('href')
+			},
+			type: 'inline'
+		});
+
 
 $('#js-countdown').countdown({
 	timestamp: new Date('2016', '03', '24'),
@@ -82,7 +97,7 @@ $('.js-carousel').owlCarousel({
     loop:true,
     nav:true,
     dots:false,
-    margin: 40,
+    margin: 10,
     responsiveClass:true,
     responsive:{
         0:{
