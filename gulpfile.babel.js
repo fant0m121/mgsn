@@ -79,7 +79,7 @@ gulp.task('html', ['styles', 'scripts', 'views'], () => {
     .pipe($.plumber())
     .pipe(assets)
     .pipe($.if('*.js', $.uglify()))
-    .pipe($.if('*.css', $.cssnano()))
+    .pipe($.if('*.css', $.cssnano({zindex:false})))
     .pipe($.if('*.css', $.autoprefixer({
       browsers: ['last 2 version', '> 1%', 'ie >= 9']
     })))

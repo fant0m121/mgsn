@@ -57,9 +57,9 @@ throttle = (callback, limit) ->
 		), limit
 
 setClass = () ->
-	scrollTop = $('html').scrollTop()
+	scrollTop = $window.scrollTop()
 
-	if scrollTop > 11
+	if scrollTop > 104
 		$header.addClass('b-page__line--fixed')
 		$root.addClass('b-page--fixed')
 	else
@@ -90,11 +90,13 @@ $('#js-countdown').countdown({
 		
 });
 
+$('input[name="phone"]').mask('+7 (999) 999-99-99');
 
 $('.b-input--blue, .b-input--checkbox, .b-input--green').styler();
 
 $('.js-carousel').owlCarousel({
-    loop:true,
+    loop: true,
+    autoPlay: true,
     nav:true,
     dots:false,
     margin: 10,
@@ -106,12 +108,178 @@ $('.js-carousel').owlCarousel({
         },
         600:{
             items:2,
-            nav:false
+            nav:true
         },
         1000:{
             items:3,
-            nav:true,
-            loop:false
+            nav:true
         }
     }
 })
+
+$('.js-form-main').on('submit', (e) ->
+
+	formData = $(this).serializeObject();
+	sendData =
+		potential_customer: formData,
+	
+
+	$.ajax({
+		type: 'POST'
+		url: '/ajax/form-main/'
+		data: JSON.stringify(sendData)
+		contentType: "application/json"
+		dataType: 'json'
+		success: () ->
+			$('.js-form-main').find('.b-form__fieldset').hide()
+			$('.js-success-main').show()
+
+		error: (e) ->
+			console.log(e)
+			$('.js-form-main').find('.b-form__fieldset').hide()
+			$('.js-success-main').show()
+			
+	});
+
+	e.preventDefault();
+)
+
+$('.js-send-email').on('submit', (e) ->
+
+	formData = $(this).serializeObject();
+	sendData =
+		potential_customer: formData,
+	
+
+	$.ajax({
+		type: 'POST'
+		url: '/ajax/form-phone/'
+		data: JSON.stringify(sendData)
+		contentType: "application/json"
+		dataType: 'json'
+		success: () ->
+			$(this).find('.b-form__fieldset').hide()
+			$(this).find('.js-success-phone').show()
+
+		error: (e) ->
+			console.log(e)
+			$('.js-form-phone').find('.b-form__fieldset').hide()
+			$('.js-success-phone').show()
+			
+	});
+
+	e.preventDefault();
+)
+
+$('.js-form-order').on('submit', (e) ->
+
+	formData = $(this).serializeObject();
+	calcData = $('.js-form-calc').serializeObject();
+	sendData =
+		potential_customer: formData,
+		calc_data: calcData
+	
+
+	$.ajax({
+		type: 'POST'
+		url: '/ajax/form-calc/'
+		data: JSON.stringify(sendData)
+		contentType: "application/json"
+		dataType: 'json'
+		success: () ->
+			$('.js-form-calc').find('.b-form__fieldset--colum').hide()
+			$('.js-success-calc').show()
+
+			$('.js-form-order').find('.b-form__fieldset').hide()
+			$('.js-success-order').show()
+
+		error: (e) ->
+			console.log(e)
+			$('.js-form-calc').find('.b-form__fieldset').hide()
+			$('.js-success-calc').show()
+			
+	});
+
+	e.preventDefault();
+)
+
+$('.js-form-callback').on('submit', (e) ->
+
+	formData = $(this).serializeObject();
+	sendData =
+		potential_customer: formData,
+	
+
+	$.ajax({
+		type: 'POST'
+		url: '/ajax/form-callback/'
+		data: JSON.stringify(sendData)
+		contentType: "application/json"
+		dataType: 'json'
+		success: () ->
+			$('.js-form-callback').find('.b-form__fieldset').hide()
+			$('.js-success-callback').show()
+
+		error: (e) ->
+			console.log(e)
+			$('.js-form-callback').find('.b-form__fieldset').hide()
+			$('.js-success-callback').show()
+			
+	});
+
+	e.preventDefault();
+)
+
+$('.js-form-review').on('submit', (e) ->
+
+	formData = $(this).serializeObject();
+	sendData =
+		potential_customer: formData,
+	
+
+	$.ajax({
+		type: 'POST'
+		url: '/ajax/form-review/'
+		data: JSON.stringify(sendData)
+		contentType: "application/json"
+		dataType: 'json'
+		success: () ->
+			$('.js-form-review').find('.b-form__fieldset').hide()
+			$('.js-success-review').show()
+
+		error: (e) ->
+			console.log(e)
+			$('.js-form-review').find('.b-form__fieldset').hide()
+			$('.js-success-review').show()
+			
+	});
+
+	e.preventDefault();
+)
+
+$('.js-form-sms').on('submit', (e) ->
+
+	formData = $(this).serializeObject();
+	sendData =
+		potential_customer: formData,
+	
+
+	$.ajax({
+		type: 'POST'
+		url: '/ajax/form-sms/'
+		data: JSON.stringify(sendData)
+		contentType: "application/json"
+		dataType: 'json'
+		success: () ->
+			$('.js-form-sms').find('.b-form__fieldset--colum').hide()
+			$('.js-success-sms').show()
+
+		error: (e) ->
+			console.log(e)
+			$('.js-form-sms').find('.b-form__fieldset--colum').hide()
+			$('.js-success-sms').show()
+			
+	});
+
+	e.preventDefault();
+)

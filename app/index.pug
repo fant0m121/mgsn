@@ -64,18 +64,21 @@ html.no-js(lang="ru")
 					.b-main__box выдаем аванс в день обращения
 
 				.b-main__form
-					form.b-form
+					form.b-form.js-form-main(action='/ajax/form-main/', method='post')
 						.b-form__title Оставьте заявку мы свяжемся с вами в течение 5 минут
 						.b-form__fieldset
+							.b-form__error.js-error-main
 							.b-form__group.b-form__group--main
 								input.b-input.b-input--text(name='name', type='text', placeholder='Ваше имя')
 							.b-form__group.b-form__group--main
-								input.b-input.b-input--text(name='phone', type='text', placeholder='+7 (123) 456-78-89')
+								input.b-input.b-input--text(name='phone', type='tel', placeholder='+7 (123) 456-78-89', required)
 							.b-form__group.b-form__group--main
-								a.b-button.b-button--send(name='submit', href='#') Отправить
+								button.b-button.b-button--send.js-send-main(type='submit') Отправить
 								.b-form__data 
 									img(src='/assets/images/icon-data.png', alt='')
 									| &nbsp;Данные не передаются 3-м лицам
+						
+						.b-form__success.js-success-main Спасибо! Ваша заявка отправлена
 
 				.b-main__why
 					.b-why
@@ -135,25 +138,29 @@ html.no-js(lang="ru")
 							.b-counter__content#js-countdown
 					.b-special__list
 						ul.b-list
-							li.b-list__item.b-list__item--checked Составление договора и последующая регистрация в РОСРЕЕСТРЕ
+							li.b-list__item.b-list__item--checked Составление договора и регистрация в РОСРЕЕСТРЕ
 							li.b-list__item.b-list__item--checked Проверка и пересчет денежных средств в Банке
 							li.b-list__item.b-list__item--checked Оплата банковской депозитарной ячейки
 							li.b-list__item.b-list__item--checked Бесплатная консультация юриста
 							li.b-list__item.b-list__item--checked Вы не оплачиваете услуги агентства при срочном выкупе
 				.b-special__form
-					form.b-form.b-form--blue
+					form.b-form.b-form--blue.js-form-phone(action='/ajax/form-phone/', method='post')
 						.b-form__title.b-form__title--white
 							span Оставьте заявку
 							| мы свяжемся с вами в течение 5 минут
 						.b-form__fieldset.b-form__fieldset--colum
+							.b-form__error.js-error-phone
 							.b-form__group
-								input.b-input.b-input--white(name='phone', type='text', placeholder='+7 (123) 456-78-89')
+								input.b-input.b-input--white(name='phone', type='text', placeholder='+7 (123) 456-78-89', required)
 							.b-form__button
-								a.b-button.b-button--send(name='submit', href='#') Отправить
+								button.b-button.b-button--send.js-send-phone(type='submit', name='button-phone') Отправить
 							.b-form__text Мы свяжемся с вами в течение 5 минут
 							.b-form__data 
 								img(src='/assets/images/icon-data--white.png', alt='')
 								| &nbsp;&nbsp;Данные не передаются 3-м лицам
+
+						.b-form__success.js-success-phone Спасибо! Ваша заявка отправлена
+						
 
 		.b-page__line.b-page__line--white
 			.b-process#process
@@ -225,7 +232,7 @@ html.no-js(lang="ru")
 				.b-sms__form
 					form.b-form
 						.b-form__group
-							a.b-button.b-button--send(name='submit', href='#') Получить оценку
+							a.b-button.b-button--send.js-show-modal(href='#js-m-sms') Получить оценку
 							.b-form__data 
 								img(src='/assets/images/icon-data.png', alt='')
 								| &nbsp;Данные не передаются 3-м лицам
@@ -233,98 +240,102 @@ html.no-js(lang="ru")
 			.b-calc
 				.b-calc__title Узнайте реальную стоимость вашего объекта
 				.b-calc__form
-					form.b-form
-						.b-form__step Шаг 1: 
-							span введите ожидаемую стоимость вашего объекта
-						.b-form__group.b-form__group--flex
-							input.b-input.b-input--text.b-input--price(name='price', type='text', placeholder='')
-							select.b-input.b-input--select.b-input--green
-								option ₽
-								option $
-								option €
-						.b-form__step Шаг 2: 
-							span данные вашего объекта
-						.b-form__group.b-form__group--flex
-							.b-form__checkbox
-								input.b-input.b-input--checkbox#i-c-flat(name='object_type', type='radio', checked=true, value='Квартира')
-								label.b-label.b-label--checkbox(for='i-c-flat') Квартира
-							.b-form__checkbox
-								input.b-input.b-input--checkbox#i-c-room(name='object_type', type='radio', value='Комната')
-								label.b-label.b-label--checkbox(for='i-c-room') Комната
-							.b-form__checkbox
-								input.b-input.b-input--checkbox#i-c-share(name='object_type', type='radio', value='Доля')
-								label.b-label.b-label--checkbox(for='i-c-share') Доля
-							.b-form__checkbox
-								input.b-input.b-input--checkbox#i-c-house(name='object_type', type='radio', value='Дом')
-								label.b-label.b-label--checkbox(for='i-c-house') Дом
-							.b-form__checkbox
-								input.b-input.b-input--checkbox#i-c-lot(name='object_type', type='radio', value='Дом')
-								label.b-label.b-label--checkbox(for='i-c-lot') Участок
-						.b-form__fieldset.b-form__fieldset--calc
-							.b-form__group.b-form__group--calc
-								label.b-label.b-label--select(for='i-c-type-house') Тип дома
-								select.b-input.b-input--select.b-input--blue(name='type-house')
-									option Выбрать
-									option Панель
-									option Кирпич
-									option Монолит
-							.b-form__group.b-form__group--calc
-								label.b-label.b-label--select(for='i-c-rooms') количество комнат
-								select.b-input.b-input--select.b-input--blue(name='rooms')
-									option Выбрать
-									option 1
-									option 2
-									option 3
-									option 4
-									option 5
-									option 6
-									option 7
-									option 8
-									option 9
-									option 10
-							.b-form__group.b-form__group--calc
-								label.b-label.b-label--select(for='i-c-etage') этаж
-								- var n = 1
-								select.b-input.b-input--select.b-input--blue(name='etage')
-									option Выбрать
-									while n < 50
-										option= n++
-							.b-form__group.b-form__group--calc
-								label.b-label.b-label--select(for='i-c-etage') общая площадь
-								input.b-input.b-input--blue(type='text', name='square', placeholder='Введите площадь, м²')
-						.b-form__fieldset.b-form__fieldset--calc
-							.b-form__group.b-form__group--calc
-								label.b-label.b-label--select(for='i-c-remont') качество ремонта
-								select.b-input.b-input--select.b-input--blue(name='remont')
-									option Выбрать
-									option Под ремонт
-									option Муниципальная отделка
-									option Среднее
-									option Хорошее
-									option Евро
-									option Элит
-							.b-form__group.b-form__group--calc
-								label.b-label.b-label--select(for='i-c-age') возраст
-								- var n = 1
-								select.b-input.b-input--select.b-input--blue(name='age')
-									option Выбрать
-									while n < 100
-										option= n++
-							.b-form__group.b-form__group--calc
-								label.b-label.b-label--select(for='i-c-balcon') Балкон
-								select.b-input.b-input--select.b-input--blue(name='balcon')
-									option Выбрать
-									option Один балкон
-									option Два балкона
-									option Три балкона
-									option Одна лоджия
-									option Две лоджии
-									option Три лоджии
-						.b-form__button
-							a.b-button.b-button--send(name='submit', href='#') узнайте стоимость
-							.b-form__data 
-								img(src='/assets/images/icon-data.png', alt='')
-								| &nbsp;Данные не передаются 3-м лицам
+					form.b-form.js-form-calc(action='/ajax/form-calc/', method='post')
+						.b-form__fieldset--colum
+							.b-form__error.js-error-calc
+							.b-form__step Шаг 1: 
+								span введите ожидаемую стоимость вашего объекта
+							.b-form__group.b-form__group--flex
+								input.b-input.b-input--text.b-input--price(name='price', type='text', placeholder='500 000')
+								select.b-input.b-input--select.b-input--green(name='currency')
+									option(value='RUR') Руб.
+									option(value='USD') $
+									option(value='EUR') €
+							.b-form__step Шаг 2: 
+								span данные вашего объекта
+							.b-form__group.b-form__group--flex
+								.b-form__checkbox
+									input.b-input.b-input--checkbox#i-c-flat(name='object_type', type='radio', checked=true, value='Квартира')
+									label.b-label.b-label--checkbox(for='i-c-flat') Квартира
+								.b-form__checkbox
+									input.b-input.b-input--checkbox#i-c-room(name='object_type', type='radio', value='Комната')
+									label.b-label.b-label--checkbox(for='i-c-room') Комната
+								.b-form__checkbox
+									input.b-input.b-input--checkbox#i-c-share(name='object_type', type='radio', value='Доля')
+									label.b-label.b-label--checkbox(for='i-c-share') Доля
+								.b-form__checkbox
+									input.b-input.b-input--checkbox#i-c-house(name='object_type', type='radio', value='Дом')
+									label.b-label.b-label--checkbox(for='i-c-house') Дом
+								.b-form__checkbox
+									input.b-input.b-input--checkbox#i-c-lot(name='object_type', type='radio', value='Участок')
+									label.b-label.b-label--checkbox(for='i-c-lot') Участок
+							.b-form__fieldset.b-form__fieldset--calc
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-c-type-house') Тип дома
+									select.b-input.b-input--select.b-input--blue(name='type_house')
+										option(value='Не выбрано') Выбрать
+										option(value='Панель') Панель
+										option(value='Кирпич') Кирпич
+										option(value='Монолит') Монолит
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-c-rooms') количество комнат
+									select.b-input.b-input--select.b-input--blue(name='rooms')
+										option(value='Не выбрано') Выбрать
+										option(value='1') 1
+										option(value='2') 2
+										option(value='3') 3
+										option(value='4') 4
+										option(value='5') 5
+										option(value='6') 6
+										option(value='7') 7
+										option(value='8') 8
+										option(value='9') 9
+										option(value='10') 10
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-c-etage') этаж
+									- var n = 1
+									select.b-input.b-input--select.b-input--blue(name='etage')
+										option Выбрать
+										while n < 50
+											option= n++
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-c-etage') общая площадь
+									input.b-input.b-input--blue(type='text', name='square', placeholder='Введите площадь, м²')
+							.b-form__fieldset.b-form__fieldset--calc
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-c-remont') качество ремонта
+									select.b-input.b-input--select.b-input--blue(name='remont')
+										option(value='Не выбрано') Выбрать
+										option(value='Под ремонт') Под ремонт
+										option(value='Муниципальная отделка') Муниципальная отделка
+										option(value='Среднее') Среднее
+										option(value='Хорошее') Хорошее
+										option(value='Евро') Евро
+										option(value='Элит') Элит
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-c-age') возраст
+									- var n = 1
+									select.b-input.b-input--select.b-input--blue(name='age')
+										option Выбрать
+										while n < 100
+											option= n++
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-c-balcon') Балкон
+									select.b-input.b-input--select.b-input--blue(name='balcon')
+										option(value='Не выбрано') Выбрать
+										option(value='Один балкон') Один балкон
+										option(value='Два балкона') Два балкона
+										option(value='Три балкона') Три балкона
+										option(value='Одна лоджия') Одна лоджия
+										option(value='Две лоджии') Две лоджии
+										option(value='Три лоджии') Три лоджии
+
+							.b-form__button
+								a.b-button.b-button--send.js-show-modal(href='#js-m-order') Узнайте стоимость
+								.b-form__data 
+									img(src='/assets/images/icon-data.png', alt='')
+									| &nbsp;Данные не передаются 3-м лицам
+						.b-form__success.js-success-calc Спасибо! Ваша заявка отправлена
 
 		.b-page__line.b-page__line--blue
 			.b-about#about
@@ -374,7 +385,7 @@ html.no-js(lang="ru")
 						.b-consultant
 							img.b-consultant__image(src='/assets/images/consultant-kovalenko.png', alt='')
 							.b-consultant__name Алёна коваленко
-							.b-consultant__work Руководитель проекта
+							.b-consultant__work Ведущий эксперт
 
 		.b-page__line.b-page__line--white
 			.b-results
@@ -382,70 +393,60 @@ html.no-js(lang="ru")
 				.b-results__list.owl-theme.owl-carousel.js-carousel
 					.b-results__item
 						img.b-results__image(src='/assets/images/results-image-1.png')
-						.b-results__description М. ОКТЯБРЬСКАЯ, УЛ. ШАБОЛОВКА Д.17 
+						.b-results__description м. Октябрьская, ул. Шаболовка д.17 
 							br
-							br
-							| 2-КОМНАТНАЯ КВАРТИРА 50 М.КВ 5/10 КИРПИЧНОГО ДОМА. КВАРТИРА БЫЛА ПОД ЗАЛОГОМ У БАНКА. ВЫКУПИЛИ ЗА 3 ДНЯ, ВЫДАЛИ АВАНС ДЛЯ ПОГАШЕНИЯ ПРОСРОЧКИ ПЛАТЕЖЕЙ В ДЕНЬ ОБРАЩЕНИЯ. 
+							| 2-комнатная квартира 50 м.кв 5/10 кирпичного дома. Квартира была под залогом у банка. Выкупили за 3 дня, выдали аванс для погашения просрочки платежей в день обращения. 
 
 					.b-results__item
 						img.b-results__image(src='/assets/images/results-image-2.png')
-						.b-results__description М.УЛИЦА 1905 ГОДА, УЛ.ПРЕСНЕНСКИЙ ВАЛ Д.5
+						.b-results__description м. Улица 1905 года, ул.Пресненский вал д.5
 							br
-							br
-							| 2-Х КОМНАТНАЯ КВАРТИРА  57 М.КВ. ,1/8 КИРПИЧНОГО ДОМА. КВАРТИРА С ДОЛГАМИ ПО КОММУНАЛЬНЫМ ПЛАТЕЖАМ .ВЫДАЛИ АВАНС НА СЛЕДУЮЩИЙ ДЕНЬ ПОСЛЕ ОБРАЩЕНИЯ. ПОСЛЕ ПОГАШЕНИЯ ДОЛГОВ , ВЫКУПИЛИ ЗА ДВА  ДНЯ.
+							| 2-х комнатная квартира  57 м.кв. ,1/8 кирпичного дома. квартира с долгами по коммунальным платежам. Выдали аванс на следующий день после обращения. после погашения долгов , выкупили за два  дня.
 					.b-results__item
 						img.b-results__image(src='/assets/images/results-image-3.png')
-						.b-results__description Г.ЛЮБЕРЦЫ, УЛ.ИНИЦИАТИВНАЯ 1К3
+						.b-results__description г. Люберцы, ул. Инициативная 1к3
 							br
-							br
-							| 1-КОМНАТНАЯ КВАРТИРА 37 М.КВ. ,3/14 ПАНЕЛЬНОГО ДОМА. СОБСТВЕННИКУ СРОЧНО ТРЕБОВАЛИСЬ ДЕНЕЖНЫЕ СРЕДСТВА, НЕ БЫЛО СВИДЕТЕЛЬСТВА О СОБСТВЕННОСТИ. ВОССТАНОВИЛИ ДОКУМЕНТЫ. ВЫКУПИЛИ ЗА ПЯТЬ ДНЕЙ.
+							| 1-комнатная квартира 37 м.кв., 3/14 панельного дома. Собственнику срочно требовались денежные средства, не было свидетельства о собственности. Восстановили документы. Выкупили за пять дней.
 					.b-results__item
 						img.b-results__image(src='/assets/images/results-image-4.png')
-						.b-results__description М. ЦАРИЦЫНО, УЛ.ЭЛЕВАТОРНАЯ 1К3
+						.b-results__description м. Царицыно, ул. Элеваторная 1к3
 							br
-							br
-							| 3-КОМНАТНАЯ КВАРТИРА 60 М.КВ.  10/17 ПАНЕЛЬНОГО ДОМА. КВАРТИРА ПОД ИПОТЕКОЙ. СНЯЛИ ОБРЕМЕНЕНИЕ С ПРИВЛЕЧЕНИЕМ СОБСТВЕННЫХ СРЕДСТВ. ВЫКУПИЛИ ЗА ТРИ ДНЯ.
+							| 3-комнатная квартира 60 м.кв.  10/17 панельного дома. Квартира под ипотекой. Сняли обременение с привлечением собственных средств. Выкупили за три дня.
 					.b-results__item
 						img.b-results__image(src='/assets/images/results-image-5.png')
-						.b-results__description Г.ДОЛГОПРУДНЫЙ, УЛ.МАЯКОВСКОГО 33
+						.b-results__description г. Долгопрудный, ул. Маяковского 33
 							br
-							br
-							| 2-Х КОМНАТНАЯ КВАРТИРА , 58 М.КВ., 2/9 КИРПИЧНОГО ДОМА. ПОТРЕБНОСТЬ В ОБМЕНЕ И ПЕРЕЕЗДЕ.  2 ДОЛИ ПО ½ . ВЫКУПИЛИ ЗА ТРИ ДНЯ. 
+							| 2-х комнатная квартира , 58 м.кв., 2/9 кирпичного дома. Потребность в обмене и переезде.  2 доли по ½. Выкупили за три дня. 
 					.b-results__item
 						img.b-results__image(src='/assets/images/results-image-6.png')
-						.b-results__description М.АЛТУФЬЕВО УЛ.АБРАМЦЕВСКАЯ 14
+						.b-results__description м. Алтуфьево, ул. Абрамцевская 14
 							br
-							br
-							| 3-Х КОМНАТНАЯ КВАРТИРА , 80 М.КВ. 6/12 ПАНЕЛЬНОГО ДОМА . КВАРТИРА ПОД ЗАЛОГОМ. ВЫДАЛИ АВАНС В ДЕНЬ ОБРАЩЕНИЯ. ВЫКУПИЛИ ЗА 3 ДНЯ. 
+							| 3-х комнатная квартира , 80 м.кв. 6/12 панельного дома . Квартира под залогом. Выдали аванс в день обращения. Выкупили за 3 дня. 
 					.b-results__item
 						img.b-results__image(src='/assets/images/results-image-7.png')
-						.b-results__description М. НОВОКОСИНО  УЛ. СУЗДАЛЬСКАЯ 36К2
+						.b-results__description м. Новокосино  ул. Суздальская 36к2
 							br
-							br
-							| 1-КОМНАТНАЯ КВАРТИРА , 38 М.КВ. 3/14 ПАНЕЛЬНОГО ДОМА . СРОЧНАЯ ПРОДАЖА ДЛЯ ПОКУПКИ АЛЬТЕРНАТИВЫ. ВЫКУПИЛИ ЗА ДВА ДНЯ.
+							| 1-комнатная квартира , 38 м.кв. 3/14 панельного дома . Срочная продажа для покупки альтернативы. Выкупили за два дня.
 					.b-results__item
 						img.b-results__image(src='/assets/images/results-image-8.png')
-						.b-results__description М. КУНЦЕВСКАЯ УЛ.КОЦЮБИНСКОГО 7К1
+						.b-results__description м. Кунцевская ул. Коцюбинского 7к1
 							br
-							br
-							| 1/3 ПАНЕЛЬНОГО ДОМА , КОМНАТА В 2-Х КОМНАТНОЙ КВАРТИРЕ С ДОЛГАМИ ПО КОММУНАЛЬНЫМ ПЛАТЕЖАМ. ВЫДАЛИ АВАНС В ДЕНЬ ОБРАЩЕНИЯ. ВЫКУПИЛИ ЗА ТРИ ДНЯ. 
+							| 1/3 панельного дома , комната в 2-х комнатной квартире с долгами по коммунальным платежам. Выдали аванс в день обращения. выкупили за три дня. 
 					.b-results__item
 						img.b-results__image(src='/assets/images/results-image-9.png')
-						.b-results__description Г.КРАСНОГОРСК, ПАВШИНСКАЯ ПОЙМА , ПОДМОСКОВНЫЙ БУЛЬВАР 8
+						.b-results__description г. Красногорск, Павшинская пойма, Подмосковный бульвар 8
 							br
-							br
-							| 3-Х КОМНАТНАЯ КВАРТИРА, 65 М.КВ.  КВАРТИРА С ОБРЕМЕНЕНИЕМ. СНЯЛИ ЗАЛОГ  НА СЛЕДУЮЩИЙ ДЕНЬ ПОСЛЕ ОБРАЩЕНИЯ. ВЫКУПИЛИ ЗА ПЯТЬ ДНЕЙ.
+							| 3-х комнатная квартира, 65 м.кв.  Квартира с обременением. Сняли залог  на следующий день после обращения. В .
 					.b-results__item
 						img.b-results__image(src='/assets/images/results-image-10.png')
-						.b-results__description М.САВЕЛОВСКАЯ, УЛ. ПОЛКОВАЯ 20
+						.b-results__description м. Савеловская, ул. Полковая 20
 							br
-							br
-							| 4-Х КОМНАТНАЯ КВАРТИРА, 108,2 М.КВ. КВАРТИРА ПОД ИПОТЕКОЙ, СНЯЛИ ОБРЕМЕНЕНИЕ. ВЫКУПИЛИ ЗА 4 ДНЯ. 
+							| 4-х комнатная квартира, 108,2 м.кв. Квартира под ипотекой, сняли обременение. Выкупили за 4 дня. 
 
 		.b-page__line.b-page__line--gray
 			.b-reviews#reviews
 				.b-reviews__title Отзывы наших клиентов
-				.b-reviews__list.owl-theme.owl-carousel.js-carousel
+				.b-reviews__list.owl-theme.owl-theme--green.owl-carousel.js-carousel
 					.b-reviews__item
 						.b-results__text Хотим поблагодарить  Матвея (отделение МГСН Пресня) за отлично проделанную работу и профессионализм. Квартиру продали быстро и без проволочек. Матвей смог организовать большое количество просмотров за короткий срок, всю рутинную работу по оформлению документов взял на себя. И мы и наши покупатели остались очень довольны быстрой и без проблемной сделкой. С Матвеем было очень приятно иметь дело. Всем рекомендую Московскую Городскую Службу Недвижимости.
 						.b-results__author 
@@ -487,69 +488,205 @@ html.no-js(lang="ru")
 			.b-map#ymap
 			.b-map__content
 				.b-map__form
-					form.b-form.b-form--blue
+					form.b-form.b-form--blue.js-form-phone(action='/ajax/form-phone/', method='post')
 						.b-form__title.b-form__title--white 
 							span Оставьте заявку 
 							| мы свяжемся с вами в течение 5 минут
 						.b-form__fieldset.b-form__fieldset--colum
+							.b-form__error.js-error-phone
 							.b-form__group
-								input.b-input.b-input--white(name='phone', type='text', placeholder='+7 (123) 456-78-89')
+								input.b-input.b-input--white(name='phone', type='text', placeholder='+7 (123) 456-78-89', required)
 							.b-form__button
-								a.b-button.b-button--send(name='submit', href='#') Отправить
+								.b-button.b-button--send.js-send-phone(type='submit', name='button-phone') Отправить
 							.b-form__text Мы свяжемся с вами в течение 5 минут
 							.b-form__data 
 								img(src='/assets/images/icon-data--white.png', alt='')
 								| &nbsp;Данные не передаются 3-м лицам
+						.b-form__success.js-success-phone Спасибо! Ваша заявка отправлена
 		
 		.b-window.b-window--callback.mfp-hide#js-m-callback
 			.b-window__content
 				.b-window__form
-					form.b-form.js-form-callback(action="/", method="post")
-						.b-window__title Для заказа обратного звонка<br/> заполните форму ниже:
-						.b-form__error.js-error-callback
-						.b-form__group.b-form__group--line
-							label.b-form__label.b-form__label--icon(for="i-name--callback")
-								i.fa.fa-user
-							input.b-input.b-input--white.b-input--icon#i-name--callback(name="name", type="text", placeholder="Ваше имя")
+					form.b-form.js-form-callback(action="/ajax/form-callback/", method="post")
+						.b-window__title Для заказа обратного звонка заполните форму ниже:
+						.b-form__fieldset.b-form__fieldset--colum
+							.b-form__error.js-error-callback
+							.b-form__group.b-form__group--line
+								label.b-form__label.b-form__label--icon(for="i-name--callback") Ваше имя
+								input.b-input.b-input--white.b-input--icon#i-name--callback(name="name", type="text", placeholder="Иван Сидорович")
+	
+							.b-form__group.b-form__group--line
+								label.b-form__label.b-form__label--icon(for="i-phone--callback") Ваш телефон
+									span.b-form__required *
+								input.b-input.b-input--white.b-input--icon#i-phone--callback(name="phone", type="tel", placeholder="", required)
+	
+							.b-form__button
+								button.b-button.b-button--send.js-send-callback(type="submit") Заказать звонок
 
-						.b-form__group.b-form__group--line
-							label.b-form__label.b-form__label--icon(for="i-phone--callback")
-								i.fa.fa-phone
-							input.b-input.b-input--white.b-input--icon#i-phone--callback(name="phone", type="text", placeholder="Телефон")
+						.b-form__success.js-success-callback Спасибо! Ваша заявка отправлена.
 
-						.b-form__button
-							a.b-button.b-button--send.js-send-callback(href="#") Заказать звонок
+		.b-window.b-window--callback.mfp-hide#js-m-order
+			.b-window__content
+				.b-window__form
+					form.b-form.js-form-order(action="/ajax/form-order/", method="post")
+						.b-window__title Узнайте более точную стоимость при выкупе
+						.b-form__fieldset.b-form__fieldset--colum
+							.b-form__error.js-error-order
+							.b-form__group.b-form__group--line
+								label.b-form__label.b-form__label--icon(for="i-name--order") Ваше имя
+								input.b-input.b-input--white.b-input--icon#i-name--order(name="name", type="text", placeholder="Петр Иванович")
+	
+							.b-form__group.b-form__group--line
+								label.b-form__label.b-form__label--icon(for="i-phone--order") Ваш телефон
+									span.b-form__required *
+								input.b-input.b-input--white.b-input--icon#i-phone--order(name="phone", type="text", placeholder="", required)
 
-					.b-form__success.js-success-callback Спасибо! Ваша заявка отправлена, <br>наш специалист свяжется с вами <br>в течение 15 минут.
+							.b-form__group.b-form__group--line
+								label.b-form__label.b-form__label--icon(for="i-email--order") Ваш email
+								input.b-input.b-input--white.b-input--icon#i-phone--order(name="email", type="text", placeholder="example@mail.com")
+	
+							.b-form__button
+								button.b-button.b-button--send.js-send-order(type="submit") Отправить заявку
+
+						.b-form__success.js-success-order Спасибо! Ваша заявка отправлена.
 
 		.b-window.b-window--review.mfp-hide#js-m-review
 			.b-window__content
 				.b-window__form
-					form.b-form.js-form-review(action="/", method="post")
+					form.b-form.js-form-review(action="/ajax/form-review/", method="post")
 						.b-window__title Отзыв о нашей работе
 						.b-window__note Мы уважаем Ваше мнение и обязательно ответим на Ваши обращения
-						.b-form__error.js-error-review
-						.b-form__group.b-form__group--line
-							label.b-form__label.b-form__label--icon(for="i-name--review")
-								i.fa.fa-user
-							input.b-input.b-input--white.b-input--icon#i-name--review(name="name", type="text", placeholder="Ваше имя")
+						.b-form__fieldset.b-form__fieldset--colum
+							.b-form__error.js-error-review
+							.b-form__group.b-form__group--line
+								label.b-form__label.b-form__label--icon(for="i-name--review") Ваше имя
+									span.b-form__required *
+								input.b-input.b-input--white.b-input--icon#i-name--review(name="name", type="text", placeholder="Петр Иванович", required)
+	
+							.b-form__group.b-form__group--line
+								label.b-form__label.b-form__label--icon(for="i-phone--review") Ваш e-mail
+									span.b-form__required *
+								input.b-input.b-input--white.b-input--icon#i-phone--review(name="email", type="text", placeholder="example@mail.com", required)
+	
+							.b-form__group.b-form__group--line
+								label.b-form__label.b-form__label--icon(for="i-phone--review") Комментарий
+									span.b-form__required *
+								textarea.b-input.b-input--white.b-input--textarea#i-phone--review(name="comment", placeholder="...", required)
+	
+							.b-form__button
+								button.b-button.b-button--send.js-send-review(type="submit") Отправить
 
-						.b-form__group.b-form__group--line
-							label.b-form__label.b-form__label--icon(for="i-phone--review")
-								i.fa.fa-phone
-							input.b-input.b-input--white.b-input--icon#i-phone--review(name="email", type="text", placeholder="Ваш e-mail")
+						.b-form__success.js-success-review Спасибо! Ваша отзыв отправлен.
 
-						.b-form__group.b-form__group--line
-							label.b-form__label.b-form__label--icon(for="i-phone--review")
-								i.fa.fa-phone
-							textarea.b-input.b-input--white.b-input--textarea#i-phone--review(name="comment", placeholder="Ваш комментарий")
+		.b-window.b-window--sms.mfp-hide#js-m-sms
+			.b-window__content
+				.b-window__form
+					form.b-form.js-form-sms(action="/ajax/form-sms/", method="post")
+						.b-window__title Оценка стоимости недвижимости при срочном выкупе
+						.b-window__note Пришлем по смс оценку объекта в течение 15 минут.
+						.b-form__fieldset--colum
+							.b-form__error.js-error-calc
+							.b-form__step Шаг 1: 
+								span данные вашего объекта
+							.b-form__group.b-form__group--flex
+								.b-form__checkbox
+									input.b-input.b-input--checkbox#i-s-flat(name='object_type-s', type='radio', checked=true, value='Квартира')
+									label.b-label.b-label--checkbox(for='i-s-flat') Квартира
+								.b-form__checkbox
+									input.b-input.b-input--checkbox#i-s-room(name='object_type-s', type='radio', value='Комната')
+									label.b-label.b-label--checkbox(for='i-s-room') Комната
+								.b-form__checkbox
+									input.b-input.b-input--checkbox#i-s-share(name='object_type-s', type='radio', value='Доля')
+									label.b-label.b-label--checkbox(for='i-s-share') Доля
+								.b-form__checkbox
+									input.b-input.b-input--checkbox#i-s-house(name='object_type-s', type='radio', value='Дом')
+									label.b-label.b-label--checkbox(for='i-s-house') Дом
+								.b-form__checkbox
+									input.b-input.b-input--checkbox#i-s-lot(name='object_type-s', type='radio', value='Участок')
+									label.b-label.b-label--checkbox(for='i-s-lot') Участок
+							.b-form__fieldset.b-form__fieldset--calc
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-s-type-house') Тип дома
+									select.b-input.b-input--select.b-input--blue(name='type_house')
+										option(value='Не выбрано') Выбрать
+										option(value='Панель') Панель
+										option(value='Кирпич') Кирпич
+										option(value='Монолит') Монолит
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-s-rooms') количество комнат
+									select.b-input.b-input--select.b-input--blue(name='rooms')
+										option(value='Не выбрано') Выбрать
+										option(value='1') 1
+										option(value='2') 2
+										option(value='3') 3
+										option(value='4') 4
+										option(value='5') 5
+										option(value='6') 6
+										option(value='7') 7
+										option(value='8') 8
+										option(value='9') 9
+										option(value='10') 10
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-s-etage') этаж
+									- var n = 1
+									select.b-input.b-input--select.b-input--blue(name='etage')
+										option Выбрать
+										while n < 50
+											option= n++
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-s-etage') общая площадь
+									input.b-input.b-input--blue(type='text', name='square', placeholder='Введите площадь, м²')
+							.b-form__fieldset.b-form__fieldset--calc
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-s-remont') качество ремонта
+									select.b-input.b-input--select.b-input--blue(name='remont')
+										option(value='Не выбрано') Выбрать
+										option(value='Под ремонт') Под ремонт
+										option(value='Муниципальная отделка') Муниципальная отделка
+										option(value='Среднее') Среднее
+										option(value='Хорошее') Хорошее
+										option(value='Евро') Евро
+										option(value='Элит') Элит
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-s-age') возраст
+									- var n = 1
+									select.b-input.b-input--select.b-input--blue(name='age')
+										option(value='Не выбрано') Выбрать
+										while n < 100
+											option= n++
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-s-balcon') Балкон
+									select.b-input.b-input--select.b-input--blue(name='balcon')
+										option(value='Не выбрано') Выбрать
+										option(value='Один балкон') Один балкон
+										option(value='Два балкона') Два балкона
+										option(value='Три балкона') Три балкона
+										option(value='Одна лоджия') Одна лоджия
+										option(value='Две лоджии') Две лоджии
+										option(value='Три лоджии') Три лоджии
+							.b-form__step Шаг 2: 
+								span введите контактные данные	
+							.b-form__fieldset.b-form__fieldset--calc
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-s-name') Ваше имя
+										span.b-form__required *
+									input.b-input.b-input--blue(type='text', name='name', placeholder='', required)
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-s-phone') Ваш телефон
+										span.b-form__required *
+									input.b-input.b-input--blue(type='text', name='phone', placeholder='', required)
+								.b-form__group.b-form__group--contact
+									label.b-label.b-label--select(for='i-s-address') Адрес (дом, строение, корпус)
+										span.b-form__required *
+									input.b-input.b-input--blue(type='text', name='address', placeholder='', required)
+								
+							.b-form__button
+								button.b-button.b-button--send.js-send-calc(type='submit', name='button-calc') Узнайте стоимость
+								.b-form__data 
+									img(src='/assets/images/icon-data.png', alt='')
+									| &nbsp;Данные не передаются 3-м лицам
 
-
-						.b-form__button
-							a.b-button.b-button--send.js-send-review(href="#") Отправить
-
-					.b-form__success.js-success-review Спасибо! Ваша заявка отправлена, наш специалист свяжется с вами <br>в течение 15 минут.
-
+						.b-form__success.js-success-sms Спасибо! Ваша заявка отправлена.
 
 		script(src='http://api-maps.yandex.ru/2.1/?lang=ru_RU', type='text/javascript')
 		script.
@@ -578,9 +715,11 @@ html.no-js(lang="ru")
 		
 		// build:js /assets/scripts/plugins.js
 		script(src="/../app/assets/scripts/libs/countdow.js")
+		script(src="/../app/assets/scripts/libs/jquery.maskedinput.js")
 		script(src="/../bower_components/magnific-popup/dist/jquery.magnific-popup.min.js")
 		script(src="/../bower_components/owl.carousel/dist/owl.carousel.min.js")
 		script(src="/../bower_components/jquery-form-styler/jquery.formstyler.js")
+		script(src='/assets/scripts/serialize.jquery.js')
 		// endbuild
 		
 		// build:js /assets/scripts/main.js
