@@ -11,14 +11,13 @@ scrollItems = $menuItems.map ->
 
 $menuItems.click ->
 	href = $.attr(this, 'href')
-	$('html, body').animate { scrollTop: $(href).position().top + $('html, body').scrollTop() - 104 }, 500, ->
+	$('html, body').animate { scrollTop: $(href).position().top + $('html, body').scrollTop() - 77 }, 500, ->
 		window.location.hash = href
-		return
-	false
+		return false
 
 
 $window.scroll ->
-	fromTop = $(this).scrollTop() + 104
+	fromTop = $(this).scrollTop() + 77
 
 
 	cur = scrollItems.map ->
@@ -85,7 +84,7 @@ $('.js-show-modal').click (event) ->
 
 
 $('#js-countdown').countdown({
-	timestamp: new Date('2016', '03', '24'),
+	timestamp: new Date('2016', '03', '08'),
 	callback: (days, hours, minutes, seconds)->
 		
 });

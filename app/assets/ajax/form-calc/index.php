@@ -15,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		echo json_encode(array('status' => 'have_errors','errors' => $errors));
 		
 	$name = 'mgsn';
-	$from = "no-reply@fant0m.pro";
-	$email = "no-reply@fant0m.pro";
-	$to = "roman.na@mail.ru, mb@msk.trinet.ru";
+	$from = "no-reply@presnya.mgsn.ru";
+	$email = "no-reply@presnya.mgsn.ru";
+	$to = "84951234704sv@gmail.com";
 
 	$subject = $_SERVER["HTTP_HOST"] . " :: Сообщение из формы \"Оставить заявку (синия форма)\"";		
 	$body = "
