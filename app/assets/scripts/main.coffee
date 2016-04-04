@@ -4,6 +4,8 @@ $header = $('.js-header')
 $menu = $('.js-menu')
 $menuItems = $('a[href^="#"].js-scroll-animate')
 
+magnificPopup = null
+
 scrollItems = $menuItems.map ->
 	item = $($(this).attr("href"))
 	if (item.length)
@@ -73,14 +75,14 @@ $('.js-menu-toggle').click ->
 	$menu.toggle()
 
 $('.js-show-modal').click (event) ->
-		event.preventDefault();
+	event.preventDefault();
 
-		$.magnificPopup.open({
-			items: {
-				src: $(this).attr('href')
-			},
-			type: 'inline'
-		});
+	$.magnificPopup.open({
+		items: {
+			src: $(this).attr('href')
+		},
+		type: 'inline'
+	});
 
 
 $('#js-countdown').countdown({
@@ -116,9 +118,65 @@ $('.js-carousel').owlCarousel({
     }
 })
 
+$('.js-show-confirm').on('click', (e) ->
+	e.preventDefault();
+	e.stopPropagation();
+
+	hadError = false;
+	
+	$(this).parents('form').find('select, textarea, input').each( () ->		
+		if($(this).prop('required') && !$(this).val())
+			$(this).addClass('b-input--error')
+			hadError = true
+
+			$(this).on('change', () ->	
+				if ($(this).val().length != 0)
+					$(this).off('change').removeClass('b-input--error');
+			)
+	)
+	
+	if(hadError)
+		return false
+	
+	current_phone = $(this).parents('form').find('input[name="phone"]').val()
+	current_form = '#form-' + $(this).parents('form').data('id')
+	current_modal = '#js-m-' + $(this).parents('form').data('id')
+
+	$('.js-confirm-phone').text(current_phone)
+	
+	$('.js-confirm-ok').attr('href', current_form)
+	
+	if($(current_modal).length != 0)
+		$('.js-confirm-close').attr('href', current_modal)
+	
+	$.magnificPopup.open({
+		items: {
+			src: "#js-m-confirm"
+		},
+		type: 'inline'
+	});
+)
+
+$('.js-confirm-ok').on('click', (e) ->
+	e.preventDefault()
+	e.stopPropagation()
+	
+	$.magnificPopup.close()
+
+	$($(this).attr('href')).submit()
+
+	if($('.js-confirm-close').attr('href') != "#")
+		$.magnificPopup.open({
+			items: {
+				src: $('.js-confirm-close').attr('href')
+			},
+			type: 'inline'
+		});
+)
+
 $('.js-form-main').on('submit', (e) ->
 
-	formData = $(this).serializeObject();
+	formData = $(this).serializeObject()
 	sendData =
 		potential_customer: formData,
 	
@@ -140,10 +198,10 @@ $('.js-form-main').on('submit', (e) ->
 			
 	});
 
-	e.preventDefault();
+	e.preventDefault()
 )
 
-$('.js-send-email').on('submit', (e) ->
+$('.js-form-phone').on('submit', (e) ->
 
 	formData = $(this).serializeObject();
 	sendData =

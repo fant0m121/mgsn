@@ -435,8 +435,7 @@ body
 	
 	@media (max-width: 1127px)
 		width 100%
-		padding-left  15px
-		padding-right  15px
+		padding 20px 15px
 		flex-wrap wrap
 		justify-content space-around
 	
@@ -483,6 +482,10 @@ body
 		color #232323
 		font-family font_calibli
 		text-align center
+			
+		@media (max-width: 1127px)
+			font-size 16px
+			line-height 1.2
 		
 		&--arrow
 			flex 1
@@ -517,6 +520,11 @@ body
 		line-height 24px
 		padding 10px 0 40px
 		
+		@media (max-width: 1127px)
+			font-size 16px
+			line-height 1.2
+			padding-bottom 20px
+		
 	&__list
 		display flex
 		justify-content center
@@ -535,6 +543,11 @@ body
 			flex-wrap wrap
 			width 100%
 			flex-direction row
+			
+	&__item + &__item
+		
+		@media (max-width: 768px)
+			padding-top 15px
 	
 	&__icon
 		flex 1
@@ -551,6 +564,10 @@ body
 		font-size 18px
 		text-align center
 		padding-top 10px
+		
+		@media (max-width: 768px)
+			font-size 16px
+			line-height 1.2
 		
 		b
 			display block
@@ -825,7 +842,7 @@ body
 		opacity 0
 		transition all 0.25s ease
 		background rgba(146, 195, 124, 0.75)
-		line-height 1.4
+		line-height 1.2
 		height 100%
 
 .b-reviews		
@@ -876,7 +893,9 @@ body
 		font-style italic
 		color #000
 		line-height 1.2
-
+		
+		@media (max-width: 768px)
+			font-size 16px
 .b-contacts		
 	width 1127px
 	margin 0 auto
@@ -1003,7 +1022,10 @@ body
 			margin-top 20px
 
 		&--phone
-			color #FFA400
+			color cl_red
+			
+			@media (max-width: 768px)
+				word-wrap no 
 
 	&__form
 		padding-left 20px
@@ -1023,6 +1045,7 @@ body
 
 .b-form
 	display block
+	width 100%
 	
 	&--blue
 		flex 1
@@ -1127,6 +1150,12 @@ body
 		justify-content center
 		flex-direction column
 		align-items center
+		
+		&--right
+			justify-content flex-end
+			flex-direction row
+			flex 0 0 100%
+			
 	
 	&__text
 		margin-top 15px
@@ -1222,6 +1251,24 @@ body
 			@media (max-width: 768px)
 				right 20px
 				top 8px
+
+	&--confirmation
+		background-color cl_gren
+		box-shadow: 0px 5px 5px 0px rgba(1, 1, 1, 0.75)
+		font-size 18px
+		text-transform uppercase
+		padding 5px 30px
+		transition background-color 0.25s ease
+		position relative
+		
+		&:hover
+			text-decoration none
+			background-color cl_l_gren
+			color #fff
+			
+	&--confirmation + &--confirmation
+		margin-left 15px
+
 
 .b-input
 	outline 0
@@ -1323,6 +1370,10 @@ body
 		
 		@media (max-width: 768px)
 			flex 1
+			
+	&--error
+		border-color #f00
+		color #f00
 
 .b-label 
 	font-family font_calibli

@@ -40,7 +40,7 @@ html.no-js(lang="ru")
 				.b-header__button
 					a.b-button.b-button--green.b-button--callback.js-show-modal(href='#js-m-callback') Обратный звонок
 				
-				.b-header__phone +7 (495) 123-47-04
+				.b-header__phone +7 (495) 123-47-12
 			
 				.b-menu-toggle.js-menu-toggle 
 
@@ -64,16 +64,16 @@ html.no-js(lang="ru")
 					.b-main__box выдаем аванс в день обращения
 
 				.b-main__form
-					form.b-form.js-form-main(action='/ajax/form-main/', method='post')
+					form.b-form.js-form-main#form-main(action='/ajax/form-main/', method='post', data-id='main')
 						.b-form__title Оставьте заявку мы свяжемся с вами в течение 5 минут
 						.b-form__fieldset
 							.b-form__error.js-error-main
 							.b-form__group.b-form__group--main
 								input.b-input.b-input--text(name='name', type='text', placeholder='Ваше имя')
 							.b-form__group.b-form__group--main
-								input.b-input.b-input--text(name='phone', type='tel', placeholder='+7 (123) 456-78-89', required)
+								input.b-input.b-input--text(name='phone', type='text', placeholder='+7 (123) 456-78-89', required)
 							.b-form__group.b-form__group--main
-								button.b-button.b-button--send.js-send-main(type='submit') Отправить
+								a.b-button.b-button--send.js-show-confirm(href='#') Отправить
 								.b-form__data 
 									img(src='/assets/images/icon-data.png', alt='')
 									| &nbsp;Данные не передаются 3-м лицам
@@ -144,7 +144,7 @@ html.no-js(lang="ru")
 							li.b-list__item.b-list__item--checked Бесплатная консультация юриста
 							li.b-list__item.b-list__item--checked Вы не оплачиваете услуги агентства при срочном выкупе
 				.b-special__form
-					form.b-form.b-form--blue.js-form-phone(action='/ajax/form-phone/', method='post')
+					form.b-form.b-form--blue.js-form-phone#form-phone-top(action='/ajax/form-phone/', method='post', data-id='phone-top')
 						.b-form__title.b-form__title--white
 							span Оставьте заявку
 							| мы свяжемся с вами в течение 5 минут
@@ -153,7 +153,7 @@ html.no-js(lang="ru")
 							.b-form__group
 								input.b-input.b-input--white(name='phone', type='text', placeholder='+7 (123) 456-78-89', required)
 							.b-form__button
-								button.b-button.b-button--send.js-send-phone(type='submit', name='button-phone') Отправить
+								a.b-button.b-button--send.js-show-confirm(href='#') Отправить
 							.b-form__text Мы свяжемся с вами в течение 5 минут
 							.b-form__data 
 								img(src='/assets/images/icon-data--white.png', alt='')
@@ -490,7 +490,7 @@ html.no-js(lang="ru")
 			.b-map#ymap
 			.b-map__content
 				.b-map__form
-					form.b-form.b-form--blue.js-form-phone(action='/ajax/form-phone/', method='post')
+					form.b-form.b-form--blue.js-form-phone#form-phone-bottom(action='/ajax/form-phone/', method='post', data-id='phone-bottom')
 						.b-form__title.b-form__title--white 
 							span Оставьте заявку 
 							| мы свяжемся с вами в течение 5 минут
@@ -509,7 +509,7 @@ html.no-js(lang="ru")
 		.b-window.b-window--callback.mfp-hide#js-m-callback
 			.b-window__content
 				.b-window__form
-					form.b-form.js-form-callback(action="/ajax/form-callback/", method="post")
+					form.b-form.js-form-callback#form-callback(action="/ajax/form-callback/", method="post", data-id='callback')
 						.b-window__title Для заказа обратного звонка заполните форму ниже:
 						.b-form__fieldset.b-form__fieldset--colum
 							.b-form__error.js-error-callback
@@ -520,17 +520,17 @@ html.no-js(lang="ru")
 							.b-form__group.b-form__group--line
 								label.b-form__label.b-form__label--icon(for="i-phone--callback") Ваш телефон
 									span.b-form__required *
-								input.b-input.b-input--white.b-input--icon#i-phone--callback(name="phone", type="tel", placeholder="", required)
+								input.b-input.b-input--white.b-input--icon#i-phone--callback(name="phone", type="text", placeholder="+7 (495) 55 75 45", required)
 	
 							.b-form__button
-								button.b-button.b-button--send.js-send-callback(type="submit") Заказать звонок
+								a.b-button.b-button--send.js-show-confirm(href='#') Заказать звонок
 
 						.b-form__success.js-success-callback Спасибо! Ваша заявка отправлена.
 
 		.b-window.b-window--callback.mfp-hide#js-m-order
 			.b-window__content
 				.b-window__form
-					form.b-form.js-form-order(action="/ajax/form-order/", method="post")
+					form.b-form.js-form-order#form-order(action="/ajax/form-order/", method="post", data-id='order')
 						.b-window__title Узнайте более точную стоимость при выкупе
 						.b-form__fieldset.b-form__fieldset--colum
 							.b-form__error.js-error-order
@@ -541,14 +541,14 @@ html.no-js(lang="ru")
 							.b-form__group.b-form__group--line
 								label.b-form__label.b-form__label--icon(for="i-phone--order") Ваш телефон
 									span.b-form__required *
-								input.b-input.b-input--white.b-input--icon#i-phone--order(name="phone", type="text", placeholder="", required)
+								input.b-input.b-input--white.b-input--icon#i-phone--order(name="phone", type="text", placeholder="+7 (495) 154-45-52", required)
 
 							.b-form__group.b-form__group--line
 								label.b-form__label.b-form__label--icon(for="i-email--order") Ваш email
 								input.b-input.b-input--white.b-input--icon#i-phone--order(name="email", type="text", placeholder="example@mail.com")
 	
 							.b-form__button
-								button.b-button.b-button--send.js-send-order(type="submit") Отправить заявку
+								a.b-button.b-button--send.js-show-confirm(href='#') Отправить заявку
 
 						.b-form__success.js-success-order Спасибо! Ваша заявка отправлена.
 
@@ -580,10 +580,22 @@ html.no-js(lang="ru")
 
 						.b-form__success.js-success-review Спасибо! Ваша отзыв отправлен.
 
+		.b-window.b--window--dialog.mfp-hide#js-m-confirm
+			.b-window__content
+				.b-window__title.b-window__title--center Ваш номер: 
+					nobr
+						span.b-window__title--phone.js-confirm-phone
+						| ?
+				form.b-form
+					.b-form__fieldset--colum
+						.b-form__button.b-form__button--right
+							a.b-button.b-button--confirmation.js-confirm-close(href="#") Исправить
+							a.b-button.b-button--confirmation.js-confirm-ok(href="#") Да, верно
+
 		.b-window.b-window--sms.mfp-hide#js-m-sms
 			.b-window__content
 				.b-window__form
-					form.b-form.js-form-sms(action="/ajax/form-sms/", method="post")
+					form.b-form.js-form-sms#form-sms(action="/ajax/form-sms/", method="post", data-id='sms')
 						.b-window__title Оценка стоимости недвижимости при срочном выкупе
 						.b-window__note Отправьте заявку с описанием вашего объекта и получите предварительную оценку по смс в течение 15 минут!
 						.b-form__fieldset--colum
@@ -672,18 +684,18 @@ html.no-js(lang="ru")
 								.b-form__group.b-form__group--calc
 									label.b-label.b-label--select(for='i-s-name') Ваше имя
 										span.b-form__required *
-									input.b-input.b-input--blue(type='text', name='name', placeholder='', required)
+									input.b-input.b-input--blue(type='text', name='name', placeholder='Иван Петрович', required)
 								.b-form__group.b-form__group--calc
 									label.b-label.b-label--select(for='i-s-phone') Ваш телефон
 										span.b-form__required *
-									input.b-input.b-input--blue(type='text', name='phone', placeholder='', required)
+									input.b-input.b-input--blue(type='text', name='phone', placeholder='+7 (499) 70-70-50', required)
 								.b-form__group.b-form__group--contact
 									label.b-label.b-label--select(for='i-s-address') Адрес (дом, строение, корпус)
 										span.b-form__required *
-									input.b-input.b-input--blue(type='text', name='address', placeholder='', required)
+									input.b-input.b-input--blue(type='text', name='address', placeholder='ул. Тверская, д. 25', required)
 								
 							.b-form__button
-								button.b-button.b-button--send.js-send-calc(type='submit', name='button-calc') Узнайте стоимость
+								button.b-button.b-button--send.js-show-confirm(href='#') Узнайте стоимость
 								.b-form__data 
 									img(src='/assets/images/icon-data.png', alt='')
 									| &nbsp;Данные не передаются 3-м лицам
