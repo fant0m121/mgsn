@@ -40,7 +40,7 @@ html.no-js(lang="ru")
 				.b-header__button
 					a.b-button.b-button--green.b-button--callback.js-show-modal(href='#js-m-callback') Обратный звонок
 				
-				.b-header__phone +7 (495) 123-47-12
+				.b-header__phone +7 (495) 123-47-04
 			
 				.b-menu-toggle.js-menu-toggle 
 
@@ -144,7 +144,7 @@ html.no-js(lang="ru")
 							li.b-list__item.b-list__item--checked Бесплатная консультация юриста
 							li.b-list__item.b-list__item--checked Вы не оплачиваете услуги агентства при срочном выкупе
 				.b-special__form
-					form.b-form.b-form--blue.js-form-phone#form-phone-top(action='/ajax/form-phone/', method='post', data-id='phone-top')
+					form.b-form.b-form--blue.js-form-phone-top#form-phone-top(action='/ajax/form-phone/', method='post', data-id='phone-top')
 						.b-form__title.b-form__title--white
 							span Оставьте заявку
 							| мы свяжемся с вами в течение 5 минут
@@ -159,7 +159,7 @@ html.no-js(lang="ru")
 								img(src='/assets/images/icon-data--white.png', alt='')
 								| &nbsp;&nbsp;Данные не передаются 3-м лицам
 
-						.b-form__success.js-success-phone Спасибо! Ваша заявка отправлена
+						.b-form__success.js-success-phone-top Спасибо! Ваша заявка отправлена
 						
 
 		.b-page__line.b-page__line--white
@@ -332,6 +332,10 @@ html.no-js(lang="ru")
 										option(value='Две лоджии') Две лоджии
 										option(value='Три лоджии') Три лоджии
 
+								.b-form__group.b-form__group--calc
+									label.b-label.b-label--select(for='i-c-address') Адрес
+									input.b-input.b-input--blue(type='text', name='address', placeholder='Тверская, д. 12, кв. 999')
+
 							.b-form__button
 								a.b-button.b-button--send.js-show-modal(href='#js-m-order') Узнайте стоимость
 								.b-form__data 
@@ -490,7 +494,7 @@ html.no-js(lang="ru")
 			.b-map#ymap
 			.b-map__content
 				.b-map__form
-					form.b-form.b-form--blue.js-form-phone#form-phone-bottom(action='/ajax/form-phone/', method='post', data-id='phone-bottom')
+					form.b-form.b-form--blue.js-form-phone-bottom#form-phone-bottom(action='/ajax/form-phone/', method='post', data-id='phone-bottom')
 						.b-form__title.b-form__title--white 
 							span Оставьте заявку 
 							| мы свяжемся с вами в течение 5 минут
@@ -499,12 +503,12 @@ html.no-js(lang="ru")
 							.b-form__group
 								input.b-input.b-input--white(name='phone', type='text', placeholder='+7 (123) 456-78-89', required)
 							.b-form__button
-								.b-button.b-button--send.js-send-phone(type='submit', name='button-phone') Отправить
+								a.b-button.b-button--send.js-show-confirm(href='#') Отправить
 							.b-form__text Мы свяжемся с вами в течение 5 минут
 							.b-form__data 
 								img(src='/assets/images/icon-data--white.png', alt='')
 								| &nbsp;Данные не передаются 3-м лицам
-						.b-form__success.js-success-phone Спасибо! Ваша заявка отправлена
+						.b-form__success.js-success-phone-bottom Спасибо! Ваша заявка отправлена
 		
 		.b-window.b-window--callback.mfp-hide#js-m-callback
 			.b-window__content

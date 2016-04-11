@@ -148,6 +148,8 @@ $('.js-show-confirm').on('click', (e) ->
 	
 	if($(current_modal).length != 0)
 		$('.js-confirm-close').attr('href', current_modal)
+	else
+		$('.js-confirm-close').attr('href', '#')
 	
 	$.magnificPopup.open({
 		items: {
@@ -190,18 +192,20 @@ $('.js-form-main').on('submit', (e) ->
 		success: () ->
 			$('.js-form-main').find('.b-form__fieldset').hide()
 			$('.js-success-main').show()
+			$('.js-confirm-close').attr('href', '#')
 
 		error: (e) ->
 			console.log(e)
 			$('.js-form-main').find('.b-form__fieldset').hide()
 			$('.js-success-main').show()
+			$('.js-confirm-close').attr('href', '#')
 			
 	});
 
 	e.preventDefault()
 )
 
-$('.js-form-phone').on('submit', (e) ->
+$('.js-form-phone-top').on('submit', (e) ->
 
 	formData = $(this).serializeObject();
 	sendData =
@@ -215,13 +219,40 @@ $('.js-form-phone').on('submit', (e) ->
 		contentType: "application/json"
 		dataType: 'json'
 		success: () ->
-			$(this).find('.b-form__fieldset').hide()
-			$(this).find('.js-success-phone').show()
+			$('.js-form-phone-top').find('.b-form__fieldset').hide()
+			$('.js-success-phone-top').show()
 
 		error: (e) ->
 			console.log(e)
-			$('.js-form-phone').find('.b-form__fieldset').hide()
-			$('.js-success-phone').show()
+			$('.js-form-phone-top').find('.b-form__fieldset').hide()
+			$('.js-success-phone-top').show()
+			
+	});
+
+	e.preventDefault();
+)
+
+$('.js-form-phone-bottom').on('submit', (e) ->
+
+	formData = $(this).serializeObject();
+	sendData =
+		potential_customer: formData,
+	
+
+	$.ajax({
+		type: 'POST'
+		url: '/ajax/form-phone/'
+		data: JSON.stringify(sendData)
+		contentType: "application/json"
+		dataType: 'json'
+		success: () ->
+			$('.js-form-phone-bottom').find('.b-form__fieldset').hide()
+			$('.js-success-phone-bottom').show()
+
+		error: (e) ->
+			console.log(e)
+			$('.js-form-phone-bottom').find('.b-form__fieldset').hide()
+			$('.js-success-phone-bottom').show()
 			
 	});
 
@@ -252,8 +283,11 @@ $('.js-form-order').on('submit', (e) ->
 
 		error: (e) ->
 			console.log(e)
-			$('.js-form-calc').find('.b-form__fieldset').hide()
+			$('.js-form-calc').find('.b-form__fieldset--colum').hide()
 			$('.js-success-calc').show()
+
+			$('.js-form-order').find('.b-form__fieldset').hide()
+			$('.js-success-order').show()
 			
 	});
 
